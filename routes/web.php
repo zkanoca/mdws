@@ -16,6 +16,7 @@
 // });
 Route::get('/', 'HomeController@index');
 Route::get('/contact', 'ContactController@index');
+Route::post('/contact/sendMessage', 'ContactController@sendMessage');
 
 //about pages
 Route::get('/about', 'AboutController@index');

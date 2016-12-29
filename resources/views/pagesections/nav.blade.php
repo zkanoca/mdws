@@ -8,8 +8,8 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">
-                <img alt="Mithat DURAK" src="http://mithatdurak.com/images/favicon.png">
+            <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="/">
+                <img alt="Mithat DURAK" src="{{URL::asset('/images/favicon.png')}}">
             </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">

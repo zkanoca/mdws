@@ -30,33 +30,47 @@
         #main {
             background-color: #ffffff;
             min-height: 600px;
+
         }
 
         #main_content {
             background-color: #fcfcfc;
-            min-height: 600px;
         }
 
         #side_content {
             background-color: #f7f7f7;
-            min-height: 600px;
         }
 
+        header {
+            background-image: url("{{URL::asset('/images/header-bg.png')}}");
+            /*background-image: url('https://subtlepatterns.com/patterns/congruent_outline.png');*/
+            /*background-image: url('https://subtlepatterns.com/patterns/diagmonds.png');*/
+        }
 
+        footer {
+            color: #ccc;
+            background: #333;
+        }
 
     </style>
-    <link href="http://bootswatch.com/journal/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 <div class="container-fluid" id="main">
     <div class="row">
-        <section>@include('pagesections.header')</section>
+        <header>
+            @include('pagesections.header')
+        </header>
         <section>@include('pagesections.nav')</section>
         <section>
-            <h1 id="heading" class="page-header">@yield('title')</h1>
 
-            <div id="main_content" class="col-md-8">@yield('content')</div>
-            <div id="side_content" class="col-md-4">@yield('side')</div>
+
+            <div id="main_content" class="col-md-10 col-md-offset-1">
+                <h1 id="heading" class="page-header">@yield('title')</h1>
+                @yield('content')
+            </div>
+            <div id="side_content" class="col-md-10 col-md-offset-1">@yield('side')</div>
         </section>
         <section>@include('pagesections.footer')</section>
     </div>

@@ -1,4 +1,6 @@
-<footer style="color:#ccc;background: #333;">
+<div class="clearfix"></div>
+<footer>
+    <hr>
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-6">
@@ -90,72 +92,18 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
-                <div class="widget widget_gallery">
-                    <h3 class="widget-title">Gallery</h3>
-                    <ul id="gallery">
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/01.jpg" alt="">
+                <p>&nbsp;</p>
 
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/01.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/02.jpg" alt="">
 
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/02.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/03.jpg" alt="">
-
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/03.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/04.jpg" alt="">
-
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/04.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/05.jpg" alt="">
-
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/05.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="vertical-item">
-                            <div class="item-media">
-                                <img src="images/gallery/06.jpg" alt="">
-
-                                <div class="media-links">
-                                    <a class="abs-link prettyPhoto" title="" data-gal="prettyPhoto[gal]"
-                                       href="images/gallery/06.jpg"></a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </div>
+        </div>
+
+        <div>
+            <p>
+                <small class="pull-right"> Tasarım ve Kodlama: <a href="http://zkanoca.wordpress.com" target="_blank"
+                                                                  style="color: #aaa">zkan<span
+                            style="color: #cc0000">oca</span></a></small>
+            </p>
         </div>
     </div>
 </footer>
