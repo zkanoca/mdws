@@ -7,12 +7,12 @@ use App\Pages;
 class HomeController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
 
 
-        return view('master');
+        return view('home');
     }
-    
 
-    
+
 }

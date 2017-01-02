@@ -1,109 +1,69 @@
-<div class="clearfix"></div>
-<footer>
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="widget widget_text">
-                    <a href="./" class="logo bottommargin_20">
+<footer role="contentinfo" class="bg_light_3">
+    <!--top part-->
+    <section class="footer_top_part">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30 fw_light">
+                            <h5 class="color_dark m_bottom_20">Shortly About Us</h5>
 
-                        <img src="http://mithatdurak.com/images/md_logo.png" style="height:64px;width:auto"/>
-                        <span class="logo_text">Mithat DURAK</span>
-                    </a>
+                            <p class="m_bottom_12">Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.
+                                Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla.</p>
 
-                    <div class="media thin-media">
-                        <div class="media-left fontsize_16">
-                            <i class="fa fa-map-marker"></i>
+                            <p>Donec porta diam eu massa. Quisque diam lorem, interdum vitae,dapibus ac, scelerisque
+                                vitae, pede. </p>
                         </div>
-                        <div class="media-body">
-                            Abant İzzet Baysal Üniversitesi<br>
-                            Fen Edebiyat Fakültesi<br>
-                            Psikoloji Bölümü<br>
-                            14030 Bolu TÜRKİYE
+                        <!--twitter-->
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+                            <h5 class="color_dark fw_light m_bottom_20">Latest Tweets</h5>
+                            <!--tweet list-->
+                            <div class="tweets"><p class="loading"><img src="images/loader2.gif" alt=""></p></div>
+                            <a href="https://twitter.com/fanfbmltemplate" target="_blank"
+                               class="button_type_2 d_inline_b color_blue transparent r_corners fs_medium tr_all tw_follow">Follow
+                                Us</a>
                         </div>
-                    </div>
-                    <div class="media thin-media">
-                        <div class="media-left fontsize_16">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="media-body">
-                            +90 (374) 254-1000 (1297)
-                        </div>
-                    </div>
-                    <div class="media thin-media">
-                        <div class="media-left fontsize_16">
-                            <i class="fa fa-pencil"></i>
-                        </div>
-                        <div class="media-body darklinks">
-                            <a href="mailto:mithat@mithatdurak.com">mithat@mithatdurak.com</a>
-                        </div>
-                    </div>
-                    <div class="topmargin_25">
-                        <a href="#" class="social-icon color-bg-icon rounded-icon soc-facebook"></a>
-                        <a href="#" class="social-icon color-bg-icon rounded-icon soc-twitter"></a>
-                        <a href="#" class="social-icon color-bg-icon rounded-icon soc-google"></a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="widget widget_recent_news">
-                    <h3 class="widget-title">Latest News</h3>
-                    <ul class="greylinks">
-                        <li>
-                            <a href="#">Sit amet consetetur sadipscing tempor invidunt dolore.</a>
-                            <time datetime="2015-11-08T15:05:23+00:00" class="entry-date small-text highlight">November
-                                1, 2016
-                            </time>
-                        </li>
-                        <li>
-                            <a href="#">At vero eos eit accusam et justo clita kasd.</a>
-                            <time datetime="2015-11-08T15:05:23+00:00" class="entry-date small-text highlight">November
-                                1, 2016
-                            </time>
-                        </li>
-                        <li>
-                            <a href="#">At vero eos eit accusam et justo clita kasd.</a>
-                            <time datetime="2015-11-08T15:05:23+00:00" class="entry-date small-text highlight">November
-                                1, 2016
-                            </time>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="widget widget_mailchimp">
-
-                    <h3 class="widget-title">Newsletter</h3>
-
-                    <p>Subscribe to our latest news to be updated, we promise not to spam!</p>
-
-                    <form class="signup form-inline" action="./" method="get">
-                        <div class="form-group">
-                            <input name="email" type="email" class="mailchimp_email form-control"
-                                   placeholder="Email address">
+                <div class="col-lg-6 col-md-6">
+                    <div class="row">
+                        <!--facebook plugin-->
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+                            <h5 class="color_dark fw_light m_bottom_15">Join Us on Facebook</h5>
+                            <iframe
+                                src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fenvato&amp;width=235&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=438889712801266"
+                                style="border:none; overflow:hidden; width:235px; height:258px;"></iframe>
                         </div>
-                        <button type="submit" class="theme_button">
-                            <span class="sr-only">Send</span>
-                            <i class="fa fa-pencil"></i>
-                        </button>
-                        <div class="response"></div>
-                    </form>
+                        <!--subscribe-->
+                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
+                            <h5 class="color_dark fw_light m_bottom_20">Newsletter</h5>
 
+                            <p class="fw_light m_bottom_25">Sign up to our newsletter and get exclusive deals you wont
+                                find anywhere else straight to your inbox!</p>
+
+                            <form class="subscribe_send_form">
+                                <ul>
+                                    <li class="m_bottom_20">
+                                        <input name="subscribe_email" placeholder="Your email address"
+                                               class="r_corners bg_light w_full fw_light" type="email">
+                                    </li>
+                                    <li>
+                                        <button
+                                            class="fs_medium button_type_2 color_purple transparent r_corners tr_all">
+                                            Subscribe
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="message_container d_none m_top_10"></div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <p>&nbsp;</p>
-
-
             </div>
         </div>
-
-        <div>
-            <p>
-                <small class="pull-right"> Tasarım ve Kodlama: <a href="http://zkanoca.wordpress.com" target="_blank"
-                                                                  style="color: #aaa">zkan<span
-                            style="color: #cc0000">oca</span></a></small>
-            </p>
-        </div>
-    </div>
+    </section>
+    <!--bottom part-->
+    <section class="footer_bottom_part t_align_c color_grey bg_light_4 fw_light">
+        <p>© <?php echo date('Y'); ?> Mithat DURAK. All Rights Reserved.</p>
+    </section>
 </footer>

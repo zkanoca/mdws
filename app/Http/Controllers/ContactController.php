@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use  Request;
+
 
 class ContactController extends Controller
 {
@@ -17,9 +18,23 @@ class ContactController extends Controller
         return view('contact.contact', compact('veri'));
     }
 
-    public function sendMessage()
+    /**
+     * @param Requests\SendMessageRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function sendMessage(Requests\SendMessageRequest $request)
     {
-        $formVerisi = Request::all();
+
+        //validation
+
+//        $this->validate($request,
+//            ['name' => 'required|min:3',
+//                'email' => 'required|min:5',
+//                'subject' => 'required|min:3',
+//                'message' => 'required|min:15'
+//            ]);
+
+        $formVerisi = $request->all();
 
 
         return redirect('contact');
