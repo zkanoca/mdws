@@ -30,3 +30,8 @@ Route::get('/scientific-studies/publications', 'ScientificStudiesController@publ
 Route::get('/scientific-studies/projects', 'ScientificStudiesController@projects');
 Route::get('/scientific-studies/public-studies', 'ScientificStudiesController@public_studies');
 
+
+Route::get('/scientific-studies/publications/{slug}', 'ScientificStudiesController@get_publication');
+Route::get('/scientific-studies/projects', 'ScientificStudiesController@projects');
+Route::get('/scientific-studies/projects/{slug}', 'ScientificStudiesController@get_project');
+

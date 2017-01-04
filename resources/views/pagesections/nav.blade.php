@@ -12,10 +12,10 @@
                 <i class="icon-angle-down d_inline_m"></i>
             </a>
             <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
-                <li>
+                <li class="@yield('nav_who_am_i_current')">
                     <a href="/about/who-am-i" class="d_block color_dark relative">Who Am I?</a>
                 </li>
-                <li>
+                <li class="@yield('nav_what_i_want_current')">
                     <a href="/about/what-i-want" class="d_block color_dark relative">What I Want</a>
                 </li>
             </ul>
@@ -25,13 +25,13 @@
                 <i class="icon-angle-down d_inline_m"></i>
             </a>
             <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
-                <li>
+                <li class="@yield('nav_publications_current')">
                     <a href="/scientific-studies/publications" class="d_block color_dark relative">Publications</a>
                 </li>
-                <li>
+                <li class="@yield('nav_projects_current')">
                     <a href="/scientific-studies/projects" class="d_block color_dark relative">Projects</a>
                 </li>
-                <li>
+                <li class="@yield('nav_public_studies_current')">
                     <a href="/scientific-studies/public-studies" class="d_block color_dark relative">Public Studies</a>
                 </li>
             </ul>
@@ -41,17 +41,17 @@
                 <i class="icon-angle-down d_inline_m"></i>
             </a>
             <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
-                <li>
+                <li class="@yield('nav_clinical_psychology_current')">
                     <a href="/psychology/clinical-psychology" class="d_block color_dark relative">Clinical
                         Psychology</a>
                 </li>
-                <li>
+                <li class="@yield('nav_geropsychology_current')">
                     <a href="/psychology/geropsychology" class="d_block color_dark relative">Geropsychology</a>
                 </li>
-                <li>
+                <li class="@yield('nav_trauma_psychology_current')">
                     <a href="/psychology/trauma-psychology" class="d_block color_dark relative">Trauma Psychology</a>
                 </li>
-                <li>
+                <li class="@yield('nav_clinical_psychology_current')">
                     <a href="/psychology/forensic-clinical-psychology" class="d_block color_dark relative">Forensic
                         Clinical Psychology</a>
                 </li>
@@ -62,16 +62,16 @@
                 <i class="icon-angle-down d_inline_m"></i>
             </a>
             <ul class="sub_menu r_xs_corners bg_light vr_list tr_all tr_xs_none trf_xs_none bs_xs_none d_xs_none">
-                <li>
+                <li class="@yield('nav_trainings_current')">
                     <a href="/services/trainings" class="d_block color_dark relative">Trainings</a>
                 </li>
-                <li>
+                <li class="@yield('nav_consultancy_current')">
                     <a href="/services/Consultancy" class="d_block color_dark relative">Consultancy</a>
                 </li>
-                <li>
+                <li class="@yield('nav_psychotherapy_current')">
                     <a href="/services/psychotherapy" class="d_block color_dark relative">Psychotherapy</a>
                 </li>
-                <li>
+                <li class="@yield('nav_supervision_current')">
                     <a href="/psychology/supervision" class="d_block color_dark relative">Supervision</a>
                 </li>
             </ul>

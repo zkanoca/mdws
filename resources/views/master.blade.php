@@ -85,17 +85,20 @@
                     <div
                         class="col-lg-4 col-md-4 col-sm-4 d_table_cell d_xs_block p_xs_hr_0 v_align_m f_none m_xs_bottom_10">
                         <a href="/" class="d_inline_m">
-                            <img src="images/logo.gif" alt="">
+                            <img src="/images/logo.gif" alt="">
                         </a>
                     </div>
                     <div
-                        class="col-lg-8 col-md-6 col-sm-8 d_table_cell d_xs_block p_xs_hr_0 v_align_m f_none t_align_r t_xs_align_c">
+                        class="col-lg-8 col-md-6 col-sm-8 d_table_cell d_xs_block p_xs_hr_0 v_align_m f_none t_xs_align_c">
                         <!--advertising area-->
                         <div
-                            class="advertising_area type_4 d_inline_b t_align_c bg_light_2 color_grey m_top_10 m_bottom_10 m_xs_bottom_0">
-                            <div class="tt_uppercase bg_light_3 vc_child">
-                                <div class="d_inline_m translucent fw_light lh_medium">Advertising Area<br><span
-                                        class="fs_medium">728 x 90</span></div>
+                            class="advertising_area type_4 d_inline_b color_grey m_top_10 m_bottom_10 m_xs_bottom_0">
+                            <div class="vc_child">
+                                <div class="d_inline_m translucent fw_light lh_medium">
+                                    <span class="color_black">İnsanlığın geleceği etik değerlerle bezenmiş bilimsel çalışmalara bağlıdır.
+                                    <br>Bilimden bağımsız gelecek sadece korku yaratır.</span>
+                                    <br><span class="color_purple pull-right">Mithat DURAK, 05.02.2009, Bolu</span>
+                                </div>
                             </div>
                         </div>
                     </div>

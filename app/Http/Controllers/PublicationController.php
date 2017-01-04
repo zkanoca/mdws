@@ -7,7 +7,7 @@ use App\Publication;
 
 class PublicationController extends Controller
 {
-    public function index($page = 'who-am-i')
+    public function index()
     {
 
     }

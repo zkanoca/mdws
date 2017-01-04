@@ -15,7 +15,7 @@ class ContactController extends Controller
         $veri = Contact::find(1);
 
 
-        return view('contact.contact', compact('veri'));
+        return view('contact', compact('veri'));
     }
 
     /**
