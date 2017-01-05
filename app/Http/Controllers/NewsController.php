@@ -17,4 +17,14 @@ class NewsController extends Controller
 
         return view('home', compact('news', 'about', 'publications'));
     }
+
+    public function get_news($slug)
+    {
+        $news = News::where([['slug', $slug], ['onay', '1'], ['sil', '0']])->get();
+
+        if (!$news)
+            abort(404);
+
+        return view('news-detail', compact('news'));
+    }
 }

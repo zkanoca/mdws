@@ -13,7 +13,20 @@ current
 @stop
 
 @section('content')
+<section class="page_title translucent_bg_purple t_align_c">
+    <div class="container">
+        <h1 class="color_light fw_light m_bottom_5">Projects</h1>
+        <!--breadcrumbs-->
+        <ul class="hr_list d_inline_m breadcrumbs">
+            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a><i
+                    class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i></li>
+            <li class="m_right_8 f_xs_none"><a href="/scientific_studies"
+                                               class="color_grey_light_3 d_inline_m m_right_10">Scientific Studies</a>
+            </li>
 
+        </ul>
+    </div>
+</section>
 <section class="section_offset">
     <div class="container">
         <div class="row">

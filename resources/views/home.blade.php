@@ -40,7 +40,7 @@ current
                                 <h3 class="color_dark fw_light m_bottom_12">{{$n->baslik}}</h3>
 
                                 <div class="m_bottom_12 fs_medium">{{substr(strip_tags($n->icerik),0, 200)}}</div>
-                                <a href="#"
+                                <a href="/news/{{$n->slug}}"
                                    class="color_purple d_inline_b color_pink_hover d_block m_right_20 fw_light">
                                     <span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">
                                         <i class="icon-angle-right"></i>
@@ -89,4 +89,6 @@ current
         </div>
     </div>
 </section>
+
+
 @stop

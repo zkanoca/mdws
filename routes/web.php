@@ -16,6 +16,10 @@
 // });
 Route::get('/', 'HomeController@index');
 
+//News
+Route::get('/news/', 'NewsController@index');
+Route::get('/news/{slug}', 'NewsController@get_news');
+
 //contact routes
 Route::get('/contact', 'ContactController@index');
 Route::post('/contact/sendMessage', 'ContactController@sendMessage');

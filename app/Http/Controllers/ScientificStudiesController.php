@@ -63,9 +63,9 @@ class ScientificStudiesController extends Controller
 
     public function get_project($slug)
     {
-        $project = Project::where([['slug', $slug], ['onay', '1'], ['sil', '1']])->get();
+        $project = Project::where([['slug', $slug], ['onay', '1'], ['sil', '0']])->take(1)->get();
 
-        if (count($project))
+        if (!($project))
             abort(404);
 
         return view('project-detail', compact('project'));

@@ -85,7 +85,7 @@
                     <div
                         class="col-lg-4 col-md-4 col-sm-4 d_table_cell d_xs_block p_xs_hr_0 v_align_m f_none m_xs_bottom_10">
                         <a href="/" class="d_inline_m">
-                            <img src="/images/logo.gif" alt="">
+                            <img src="/images/logo.png" alt="Mithat DURAK">
                         </a>
                     </div>
                     <div
