@@ -21,7 +21,7 @@ $status['-1'] = 'Finished';
 $status['0'] = 'Continuing';
 $status['1'] = 'Planning';
 ?>
-<section class="page_title translucent_bg_purple t_align_c">
+<section class="page_title translucent_bg_pink t_align_c">
     <div class="container">
         <h1 class="color_light fw_light m_bottom_5">Projects</h1>
         <!--breadcrumbs-->
@@ -99,5 +99,5 @@ $status['1'] = 'Planning';
 </section>
 @stop
 
-<p><strong>Proje Özeti</strong></p>
+
 

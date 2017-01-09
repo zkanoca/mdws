@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\PublicStudy;
 use Illuminate\Http\Request;
+use Illuminate\Html\HtmlServiceProvider;
 
 use App\Publication;
 use App\Citation;
 use Carbon\Carbon;
 use App\Project;
 use App\Helpers\Helper;
+use App\PublicStudyCategory;
 
 class ScientificStudiesController extends Controller
 {
@@ -71,6 +74,41 @@ class ScientificStudiesController extends Controller
         return view('project-detail', compact('project'));
     }
 
+    public function public_studies()
+    {
+        $publicStudies = PublicStudy::join('public_study_categories', 'public_study_categories.id', '=', 'public_studies.kategoriid')
+            ->select('public_studies.*', 'public_study_categories.*')
+            ->where([['public_studies.onay', '1'], ['public_studies.sil', '0']])
+            ->orderBy('public_studies.tarih', 'desc')
+            ->orderBy('public_studies.id', 'desc')
+            ->get();
+        $publicStudyCategories = PublicStudyCategory::all();
+
+        return view('public-studies', compact('publicStudies', 'publicStudyCategories'));
+    }
+
+    public function get_public_study($slug)
+    {
+
+        $publicStudies = PublicStudy::join('public_study_categories', 'public_study_categories.id', '=', 'public_studies.kategoriid')
+            ->select('public_studies.*', 'public_study_categories.*')
+            ->where([['public_studies.onay', '1'], ['public_studies.sil', '0'], ['public_studies.slug', '<>', $slug]])
+            ->orderBy('public_studies.tarih', 'desc')
+            ->orderBy('public_studies.id', 'desc')
+            ->take(10)
+            ->get();
+
+        $publicStudyCategories = PublicStudyCategory::all();
+
+        $publicStudy = PublicStudy::join('public_study_categories', 'public_study_categories.id', '=', 'public_studies.kategoriid')
+            ->select('public_studies.*', 'public_study_categories.*')
+            ->where([['public_studies.slug', $slug], ['public_studies.onay', '1'], ['public_studies.sil', '0']])->take(1)->get();
+
+        if (!$publicStudy)
+            abort(404);
+
+        return view('public-study-detail', compact('publicStudy', 'publicStudies', 'publicStudyCategories'));
+    }
 
 }
 

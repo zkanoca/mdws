@@ -3,61 +3,70 @@
     <section class="footer_top_part">
         <div class="container relative">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30 fw_light">
-                            <h5 class="color_dark m_bottom_20">Shortly About Us</h5>
 
-                            <p class="m_bottom_12">Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue.
-                                Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla.</p>
+                <div class="col-lg-4 col-md-4 col-sm-4 m_bottom_20 m_sm_bottom_30 fw_light">
+                    <h5 class="color_dark m_bottom_20">Shortly About Me</h5>
+                    <article class="clearfix">
+                        <img src="/images/mithatdurak.jpg" class="img-circle d_block f_left m_right_10"
+                             style="width:80px;height:auto"/>
 
-                            <p>Donec porta diam eu massa. Quisque diam lorem, interdum vitae,dapibus ac, scelerisque
-                                vitae, pede. </p>
+                        <div class="m_bottom_12 fw_light">
+                            @foreach(\App\Helpers\Helper::shortly_about() as $a)
+                            {!!
+                            substr($a->content, 0, strpos($a->content, '<p>', 2))
+                                !!}
+                                @endforeach
+
                         </div>
-                        <!--twitter-->
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
-                            <h5 class="color_dark fw_light m_bottom_20">Latest Tweets</h5>
-                            <!--tweet list-->
-                            <div class="tweets"><p class="loading"><img src="images/loader2.gif" alt=""></p></div>
-                            <a href="https://twitter.com/fanfbmltemplate" target="_blank"
-                               class="button_type_2 d_inline_b color_blue transparent r_corners fs_medium tr_all tw_follow">Follow
-                                Us</a>
-                        </div>
-                    </div>
+                    </article>
+                    <a href="/about" class="btn btn-warning btn-sm color_light_hover">Read More</a>
                 </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="row">
-                        <!--facebook plugin-->
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
-                            <h5 class="color_dark fw_light m_bottom_15">Join Us on Facebook</h5>
-                            <iframe
-                                src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fenvato&amp;width=235&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=438889712801266"
-                                style="border:none; overflow:hidden; width:235px; height:258px;"></iframe>
-                        </div>
-                        <!--subscribe-->
-                        <div class="col-lg-6 col-md-6 col-sm-6 m_bottom_20 m_sm_bottom_30">
-                            <h5 class="color_dark fw_light m_bottom_20">Newsletter</h5>
+                <!--twitter-->
+                <div class="col-lg-4 col-md-4 col-sm-4 m_bottom_20 m_sm_bottom_30">
+                    <h5 class="color_dark fw_light m_bottom_20">Latest News</h5>
+                    <?php $ln = \App\Helpers\Helper::latest_news(5); ?>
 
-                            <p class="fw_light m_bottom_25">Sign up to our newsletter and get exclusive deals you wont
-                                find anywhere else straight to your inbox!</p>
 
-                            <form class="subscribe_send_form">
-                                <ul>
-                                    <li class="m_bottom_20">
-                                        <input name="subscribe_email" placeholder="Your email address"
-                                               class="r_corners bg_light w_full fw_light" type="email">
-                                    </li>
-                                    <li>
-                                        <button
-                                            class="fs_medium button_type_2 color_purple transparent r_corners tr_all">
-                                            Subscribe
-                                        </button>
-                                    </li>
-                                </ul>
-                                <div class="message_container d_none m_top_10"></div>
-                            </form>
-                        </div>
-                    </div>
+
+                    @foreach($ln as $n)
+                    <article class="m_bottom_15 m_xs_bottom_20 clearfix">
+
+                        @if($n->resim != '')
+                        <a href="/news/{{$n->slug}}" class="d_block f_left wrapper m_right_10">
+                            <img src="/images/news/{{$n->resimler}}/{{$n->resim}}" style="width:80px;height:60px"
+                                 alt="{{$n->baslik}}">
+                        </a>
+                        @endif
+                        <a href="/news/{{$n->slug}}"
+                           class="color_dark m_bottom_5 d_block lh_small fw_light fs_small">{{$n->baslik}}</a>
+
+                        <p class="fs_small color_grey"><i>{{date('j M', strtotime($n->tarih))}}</i></p>
+                    </article>
+
+                    @endforeach
+
+
+                </div>
+
+                <div class="col-lg-4 col-md-4 m_bottom_20 m_sm_bottom_30 fw_light">
+
+                    <h5 class="color_dark fw_light m_bottom_15">Latest Publications</h5>
+                    <ul class="vr_list_type_2 color_dark fw_light">
+                        <?php $lp = \App\Helpers\Helper::latest_publications(4); ?>
+                        @foreach($lp as $p)
+                        <li class="m_bottom_10">
+
+                            <div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
+                                <i class="icon-doc-text"></i>
+                            </div>
+                            <a href="/scientific-studies/publications/{{$p->slug}}"
+                               class="color_dark color_dark_hover fs_small">
+                                {{$p->baslik}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+
                 </div>
             </div>
         </div>

@@ -757,6 +757,11 @@ blockquote.type_3 > p:last-of-type:after,
     background-color: rgba(78, 76, 160, .7);
 }
 
+.translucent_bg_pink,
+.translucent_bg_pink.image_fixed:before {
+    background-color: rgba(162, 85, 196, .7);
+}
+
 .color_pink,
 .color_pink_hover:hover,
 .color_pink_hover:hover [class*="color_"],
@@ -871,7 +876,7 @@ input:not([type="submit"]).error,
     background-color: rgba(231, 76, 60, .9);
 }
 
-.color_yellow,
+.color_yellow, .color_yellow_hover
 [class*="button_type_"].color_yellow:not(.transparent):hover {
     color: #f1c40f;
 }
@@ -917,6 +922,20 @@ input:not([type="submit"]).info {
 
 .color_orange {
     color: #e67e22;
+}
+
+.color_orange_hover:hover {
+    color: #e67e22;
+}
+
+.bg_color_orange {
+    color: #e67e22;
+    background-color: #ffffff;
+}
+
+.bg_color_orange_hover:hover {
+    color: #fff;
+    background-color: #e67e22;
 }
 
 input:not([type="submit"]).warning {

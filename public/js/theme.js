@@ -280,7 +280,7 @@
                         if (self.hasClass('single')) {
                             config.template = '<li class="m_bottom_25 relative w_break"><p class="fs_large">{text}</p><p class="color_grey"><i>{time}</i></p></li>';
                         }
-                        self.tweet(config);
+                        //self.tweet(config);
                         if (self.hasClass('single')) {
                             var owl = self.data('owlCarousel');
 

@@ -1,25 +1,37 @@
+<?php
+$baslik = '';
+
+foreach ($news as $n):
+    $baslik = $n->baslik;
+endforeach;
+
+
+?>
 @extends('master')
 
 @section('page_title')
-@foreach($news as $n)
-{{$n->baslik}}
-@endforeach
+{{$baslik}}
 @stop
 
 @section('nav_home_current')
 current
 @stop
 
-
+@php
+setlocale(LC_ALL, 'tr_TR.utf8');
+@endphp
 @section('content')
 
 <section class="page_title translucent_bg_purple t_align_c">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">News</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{$baslik}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a></li>
-            <li class="m_right_8 f_xs_none color_grey_light_3 d_inline_m m_right_10">News</li>
+            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a>
+                <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
+            </li>
+            <li class="m_right_8 f_xs_none"><a href="/news" class="color_grey_light_3 d_inline_m m_right_10">News</a>
+            </li>
         </ul>
     </div>
 </section>
@@ -63,15 +75,14 @@ current
             <!--post content-->
             <figure>
                 @if($n->resimler != '')
-                @php
-                $images = glob("/images/news/".$n->resimler."/*.jpg");
-
-                @endphp
+                <?php
+                $images = glob("images/news/" . $n->resimler . "/*.jpg");
+                ?>
                 @if(count($images) > 0)
                 <div class="m_bottom_20 r_corners wrapper simple_slideshow relative">
                     <ul class="slides">
                         @foreach($images as $i)
-                        <li><img src="/images/news/{{$n->resimler}}/{{$i}}" alt="{{$n->baslik}}"></li>
+                        <li><img src="/{{$i}}" alt="{{$n->baslik}}"></li>
                         @endforeach
                     </ul>
                 </div>
@@ -79,6 +90,7 @@ current
                 @elseif($n->resim = '')
                 <img src="/images/kapak/{{$n->resim}}" alt="{{$n->baslik}}" class="r_corners m_bottom_20">
                 @endif
+
                 <figcaption>
                     <h3 class="fw_light color_dark">{{$n->baslik}}</h3>
                     <ul class="dotted_list m_bottom_5 color_grey_light_2">

@@ -5,7 +5,8 @@
             <div class="col-lg-6 col-md-6 col-sm-6 t_xs_align_c">
                 <ul class="hr_list fs_small color_grey_light">
                     <li class="m_right_20 f_xs_none m_xs_right_0 m_xs_bottom_5">
-                        <span class="circle icon_wrap_size_1 d_inline_m m_right_8"><i class="icon-phone-1"></i></span>(374)-254-1000
+                        <span class="circle icon_wrap_size_1 d_inline_m m_right_8"><i class="icon-phone-1"></i></span>+90
+                        (374)-254-1000
                         (1297)
                     </li>
                     <li class="m_right_20 f_xs_none m_xs_right_0 m_xs_bottom_5">

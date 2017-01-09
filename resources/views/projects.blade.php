@@ -13,7 +13,7 @@ current
 @stop
 
 @section('content')
-<section class="page_title translucent_bg_purple t_align_c">
+<section class="page_title translucent_bg_pink t_align_c">
     <div class="container">
         <h1 class="color_light fw_light m_bottom_5">Projects</h1>
         <!--breadcrumbs-->
@@ -32,14 +32,14 @@ current
         <div class="row">
             <div class="col-md-8 col-lg-8">
                 @if(count($currentProjects))
-                <h3 class="page-header color_green m_bottom_20 t_align_c">Current Projects</h3>
-                <ul id="past-projects">
+                <h3 class="page-header color_pink m_bottom_20 t_align_c">Current Projects</h3>
+                <ul id="past-projects" class="vr_list_type_2">
                     @foreach($currentProjects as $cp)
                     <li class="m_bottom_12" id="past-project-{{$cp->id}}">
-                        <!--div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
-                            <i class="icon-check"></i>
-                        </div-->
-                        <a class="color_green color_green_hover" href="/scientific-studies/projects/{{$cp->slug}}">{{
+                        <div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
+                            <i class="icon-angle-right"></i>
+                        </div>
+                        <a class="color_pink color_pink_hover" href="/scientific-studies/projects/{{$cp->slug}}">{{
                             $cp->proje }}</a>
 
 
@@ -50,12 +50,12 @@ current
 
                 @if(count($finishedProjects))
                 <h3 class="page-header color_yellow m_bottom_20 t_align_c">Finished Projects</h3>
-                <ul id="past-projects">
+                <ul id="past-projects" class="vr_list_type_2">
                     @foreach($finishedProjects as $fp)
                     <li id="current-project-{{$fp->id}}" class="m_bottom_12">
-                        <!--div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
-                            <i class="icon-angle-right"></i>
-                        </div-->
+                        <div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
+                            <i class="icon-check"></i>
+                        </div>
                         <a class="color_yellow color_yellow_hover" href="/scientific-studies/projects/{{$fp->slug}}">{{$fp->proje}}</a>
 
                     </li>
@@ -65,14 +65,16 @@ current
             </div>
             <div class="col-md-4 col-lg-4">
                 @if(count($futureProjects))
-                <h3 class="page-header color_pink m_bottom_20 t_align_c">Future Projects</h3>
-                <ul id="past-projects">
+                <h3 class="page-header color_purple m_bottom_20 t_align_c">Future Projects</h3>
+                <ul id="past-projects" class="vr_list_type_2">
                     @foreach($futureProjects as $fp)
                     <li id="past-project-{{$fp->id}}">
-                        <!--div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
+
+                        <div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
                             <i class="icon-star"></i>
-                        </div-->
-                        <a class="color_pink color_pink_hover" href="/scientific-studies/projects/{{$fp->slug}}">{{$fp->proje}}</a>
+                        </div>
+
+                        <a class="color_purple color_purple_hover" href="/scientific-studies/projects/{{$fp->slug}}">{{$fp->proje}}</a>
 
                     </li>
                     @endforeach

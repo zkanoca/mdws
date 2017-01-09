@@ -20,11 +20,14 @@ class NewsController extends Controller
 
     public function get_news($slug)
     {
-        $news = News::where([['slug', $slug], ['onay', '1'], ['sil', '0']])->get();
-
-        if (!$news)
-            abort(404);
+        $news = News::where([['slug', $slug], ['onay', '1'], ['sil', '0']])
+            ->orderBy('tarih', 'desc')
+            ->orderBy('id', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('news-detail', compact('news'));
     }
+
+
 }

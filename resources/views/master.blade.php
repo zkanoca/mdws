@@ -118,29 +118,28 @@
     @yield('content')
 
     @include('pagesections.footer')
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous" type="text/javascript" language="JavaScript"></script>
 
-    <script src="/plugins/flexslider/jquery.flexslider-min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery.appear.js" type="text/javascript"></script>
-    <script src="/plugins/afterresize.min.js" type="text/javascript"></script>
-    <script src="/plugins/jquery.easytabs.min.js" type="text/javascript"></script>
-    <script src="/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
-    <script src="/plugins/jackbox/js/jackbox-packed.min.js" type="text/javascript"></script>
-    <script src="/plugins/twitter/jquery.tweet.min.js" type="text/javascript"></script>
-    <script src="/plugins/flickr.js" type="text/javascript"></script>
-    <script src="/plugins/jquery.easing.1.3.js" type="text/javascript"></script>
-    <script src="/plugins/colorpicker/colorpicker.js" type="text/javascript"></script>
-    <script src="/js/styleswitcher.js" type="text/javascript"></script>
+    <script src="/plugins/flexslider/jquery.flexslider-min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/jquery.appear.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/isotope.pkgd.min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/afterresize.min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/jquery.easytabs.min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/jackbox/js/jackbox-packed.min.js" type="text/javascript" language="JavaScript"></script>
+    <?php //script src="/plugins/twitter/jquery.tweet.min.js" type="text/javascript" language="JavaScript"></script ?>
+    <script src="/plugins/flickr.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/jquery.easing.1.3.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/plugins/colorpicker/colorpicker.js" type="text/javascript" language="JavaScript"></script>
+    <?php //script src="/js/styleswitcher.js" type="text/javascript" language="JavaScript"></script ?>
 
     <!--Theme Initializer-->
-    <script src="/js/theme.plugins.js" type="text/javascript"></script>
-    <script src="/js/theme.js" type="text/javascript"></script>
+    <script src="/js/theme.plugins.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/js/theme.js" type="text/javascript" language="JavaScript"></script>
 </body>
 </html>

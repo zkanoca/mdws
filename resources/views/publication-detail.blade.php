@@ -17,6 +17,31 @@ current
 
 
 @section('content')
+<section class="page_title translucent_bg_orange t_align_c">
+    <div class="container">
+        <h1 class="color_light fw_light m_bottom_5">Publications</h1>
+        <!--breadcrumbs-->
+        <ul class="hr_list d_inline_m breadcrumbs">
+            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a><i
+                    class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i></li>
+            <li class="m_right_8 f_xs_none"><a href="/scientific_studies"
+                                               class="color_grey_light_3 d_inline_m m_right_10">Scientific Studies</a>
+                <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
+            </li>
+            <li class="m_right_8 f_xs_none"><a href="/scientific_studies/publications"
+                                               class="color_grey_light_3 d_inline_m m_right_10">Publications</a>
+                <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
+            </li>
+            <li class="m_right_8 f_xs_none"><a class="color_grey_light_3 d_inline_m m_right_10">
+                    @foreach($publication as $p)
+                    {{$p->baslik}}
+                    @endforeach
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</section>
 <section class="section_offset">
 
     <div class="container">
@@ -43,8 +68,15 @@ current
                     {!! $p->abstract !!}
 
                     <h4 class="m_top_35 m_bottom_15">Keywords</h4>
-                    {{ strip_tags($p->keywords) }}
+                    <?php
+                    $kw = explode(',', strip_tags($p->keywords));
 
+                    ?>
+                    <ul class="list-inline">
+                        @foreach($kw as $w)
+                        <li><a class="label label-warning color_light_hover" href="#">{{$w}}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="ozet">
 
@@ -53,8 +85,15 @@ current
 
 
                     <h5 class="m_top_35 m_bottom_20">Anahtar Kelimeler</h5>
-                    {{ strip_tags($p->anahtar_kelimeler) }}
+                    <?php
+                    $ak = explode(',', strip_tags($p->anahtar_kelimeler));
 
+                    ?>
+                    <ul class="list-inline">
+                        @foreach($ak as $w)
+                        <li><a class="label label-warning color_light_hover" href="#">{{$w}}</a></li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
 
@@ -64,38 +103,38 @@ current
         </div>
     </div>
 </section>
-<section class="section_offset image_bg_10">
+<section class="section_offset translucent_bg_orange">
     <div class="container">
         <div class="row">
-            <h4 class="color_dark fw_normal m_bottom_35">Citation Styles for this publication</h4>
+            <h4 class="color_light_2 fw_normal m_bottom_35">Citation Styles for this publication</h4>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <h5 class="list-group-item-heading color_pink m_top_35">APA 6<sup>th</sup></h5>
+                    <h5 class="list-group-item-heading color_orange m_top_20">APA 6<sup>th</sup></h5>
 
                     {!! $p->apa6th !!}
                 </li>
                 <li class="list-group-item">
-                    <h5 class="list-group-item-heading color_pink m_top_35">MLA</h5>
+                    <h5 class="list-group-item-heading color_orange m_top_20">MLA</h5>
 
                     <p>{!! $p->mla !!}</p>
                 </li>
                 <li class="list-group-item">
 
-                    <h5 class="list-group-item-heading color_pink m_top_35">AMA</h5>
+                    <h5 class="list-group-item-heading color_orange m_top_20">AMA</h5>
 
                     <p>{!! $p->ama !!}</p>
                 </li>
 
                 <li class="list-group-item">
 
-                    <h5 class="list-group-item-heading color_pink m_top_35">Turabian-Chicago 15<sup>th</sup></h5>
+                    <h5 class="list-group-item-heading color_orange m_top_20">Turabian-Chicago 15<sup>th</sup></h5>
 
                     <p>{!! $p->turabian !!}</p>
                 </li>
 
                 <li class="list-group-item">
 
-                    <h5 class="list-group-item-heading color_pink m_top_35">Vancouver</h5>
+                    <h5 class="list-group-item-heading color_orange m_top_20">Vancouver</h5>
 
                     <p>{!! $p->vancouver !!}</p>
                 </li>
@@ -106,7 +145,7 @@ current
     </div>
 </section>
 
-<section class="section_offset">
+<section class="section_offset ">
     <div class="container">
         <div class="row">
             <?php $kategori = ''; ?>
@@ -123,12 +162,13 @@ current
             <h5 class="color_pink m_top_35 fw_light m_bottom_15 page-header">
                 {{ strtoupper($c->atif_kategorisi) }}. {{ $c->kategori}}
             </h5>
-            <ul class="list-unstyled color_dark fw_light">
+            <ul class="vr_list_type_3 counter  color_dark fw_light">
 
 
                 @endif
 
-                <li id="citation-{{$c->id}}" class="m_bottom_12 counter_inc">{!!$c->atif!!}</li>
+
+                <li id="citation-{{$c->id}}" class="m_bottom_12 counter_inc m_bottom_20">{{strip_tags($c->atif)}}</li>
 
                 @endforeach
         </div>

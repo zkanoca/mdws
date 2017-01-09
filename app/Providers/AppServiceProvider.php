@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
+use Illuminate\Http\Request;
 
-class AppServiceProvider extends ServiceProvider
+class   AppServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -24,5 +26,15 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function map(Router $router, Request $request)
+    {
+        $locale = $request->segment(1);
+        $this->app->setLocale($locale);
+
+        $router->group(['namespace' => $this->namespace, 'prefix' => $locale], function ($router) {
+            require app_path('Http/routes.php');
+        });
     }
 }
