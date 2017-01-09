@@ -84,7 +84,7 @@
                 <div class="d_table w_full d_xs_block t_xs_align_c">
                     <div
                         class="col-lg-4 col-md-4 col-sm-4 d_table_cell d_xs_block p_xs_hr_0 v_align_m f_none m_xs_bottom_10">
-                        <a href="/" class="d_inline_m">
+                        <a href="/{{App::getLocale()}}" class="d_inline_m">
                             <img src="/images/logo.png" alt="Mithat DURAK">
                         </a>
                     </div>
@@ -95,8 +95,7 @@
                             class="advertising_area type_4 d_inline_b color_grey m_top_10 m_bottom_10 m_xs_bottom_0">
                             <div class="vc_child">
                                 <div class="d_inline_m translucent fw_light lh_medium">
-                                    <span class="color_black">İnsanlığın geleceği etik değerlerle bezenmiş bilimsel çalışmalara bağlıdır.
-                                    <br>Bilimden bağımsız gelecek sadece korku yaratır.</span>
+                                    <span class="color_black">{!!trans('master.vecize')!!}</span>
                                     <br><span class="color_purple pull-right">Mithat DURAK, 05.02.2009, Bolu</span>
                                 </div>
                             </div>
@@ -119,7 +118,6 @@
 
     @include('pagesections.footer')
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"

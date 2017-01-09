@@ -10,7 +10,7 @@ return [
     'publications' => 'Yayınlar',
     'projects' => 'Projeler',
     'public_studies' => 'Toplumsal Çalışmalar',
-    'psychology' => 'Psikiloji',
+    'psychology' => 'Psikoloji',
     'clinical_psychology' => 'Klinik Psikoloji',
     'geropsychology' => 'Gero Psikoloji',
     'trauma_psychology' => 'Travma Psikoloji',

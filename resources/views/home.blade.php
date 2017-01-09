@@ -25,7 +25,7 @@ current
                             <img src="/images/news/{{$n->resimler}}/{{$n->resim}}" alt="{{$n->baslik}}"
                                  draggable="false">
                             @else
-                            <img src="/images/about_img_1.jpg" alt="Temsili Resim" draggable="false">
+                            <img src="/images/news/default.jpg" alt="{{$n->baslik}}" draggable="false">
                             @endif
 
                             <div class="fs_caption r_corners wrapper d_xs_none">
@@ -42,14 +42,15 @@ current
                                         </li>
                                     </ul>
                                 </header>
-                                <h3 class="color_dark fw_light m_bottom_12"><a href="/news/{{$n->slug}}"
-                                                                               class="color_dark color_dark_hover">{{$n->baslik}}</a>
+                                <h3 class="color_dark fw_light m_bottom_12"><a
+                                        href="/{{App::getLocale()}}/news/{{$n->slug}}"
+                                        class="color_dark color_dark_hover">{{$n->baslik}}</a>
                                 </h3>
 
                                 <div class="m_bottom_12 fs_medium">{{substr(strip_tags($n->icerik),0,
                                     strpos(strip_tags($n->icerik), '.')+1)}}
                                 </div>
-                                <a href="/news/{{$n->slug}}"
+                                <a href="/{{App::getLocale()}}/news/{{$n->slug}}"
                                    class="color_purple d_inline_b color_pink_hover d_block m_right_20 fw_light">
                                     <span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">
                                         <i class="icon-angle-right"></i>
@@ -79,7 +80,7 @@ current
                                 <img src="/images/news/{{$n->resimler}}/{{$n->resim}}" alt="{{$n->baslik}}"
                                      style="width:80px;height:80px;clip:rect(40px,40px,40px,40px);">
                                 @else
-                                <img src="/images/favicon.png" alt="Temsili Resim">
+                                <img src="/images/favicon.png" alt="{{$n->baslik}}">
                                 @endif
 
                             </div>
@@ -125,15 +126,25 @@ current
                         data-appear-animation-delay="1400">
                     <!--image-->
                     <div class="popup_wrap relative r_corners wrapper m_bottom_20 d_xs_inline_b">
-                        <img src="/images/trainings/{{$t->resim}}" alt="{{$t->baslik}}">
+                        <?php
+
+                        $resim = '/images/default.jpg';
+
+                        if ($t->resim != '' && file_exists('/images/trainings/' . $t->resimler . '/' . $t->resim)) {
+                            $resim = '/images/trainings/' . $t->resimler . '/' . $t->resim;
+                        }
+
+                        ?>
+
+                        <img src="{{$resim}}" alt="{{$t->baslik}}">
 
                         <div class="popup_buttons tr_all_long w_md_full t_md_align_c">
-                            <a href="/images/trainings/{{$t->resim}}" data-group="latest_news"
+                            <a href="{{$resim}}" data-group="trainings"
                                data-title="{{$t->baslik}}"
                                class="jackbox icon_wrap_size_3 color_light n_sc_hover d_block circle f_left m_right_10 f_md_none d_md_inline_b">
-                                <i class="icon-plus"></i>
+                                <i class="icon-zoom-in"></i>
                             </a>
-                            <a href="/services/trainings/{{$t->slug}}"
+                            <a href="/{{App::getLocale()}}/services/trainings/{{$t->slug}}"
                                class="icon_wrap_size_3 color_light n_sc_hover d_block circle f_left f_md_none d_md_inline_b">
                                 <i class="icon-link"></i>
                             </a>
@@ -141,7 +152,7 @@ current
                     </div>
                     <!--description-->
                     <figcaption>
-                        <h6 class="lh_large m_bottom_3"><a href="/services/trainings/{{$t->slug}}"
+                        <h6 class="lh_large m_bottom_3"><a href="/{{App::getLocale()}}/services/trainings/{{$t->slug}}"
                                                            class="color_dark tr_all">{{$t->baslik}}</a></h6>
                         <!--project's info-->
                         <ul class="dotted_list m_bottom_8 color_grey_light_2 lh_ex_small">
@@ -311,7 +322,7 @@ current
         <div class="row">
             <div class="col-lg-6 col-md-6">
 
-                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Publications</h3>
+                <h4 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Publications</h4>
 
                 <div id="yayinlar">
                 </div>
@@ -319,7 +330,7 @@ current
             </div>
             <div class="col-lg-6 col-md-6">
 
-                <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Citations to My Publications</h3>
+                <h4 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Citations to My Publications</h4>
 
                 <div id="atiflar">
                 </div>

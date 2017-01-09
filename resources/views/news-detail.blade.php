@@ -17,37 +17,39 @@ endforeach;
 current
 @stop
 
-@php
-setlocale(LC_ALL, 'tr_TR.utf8');
-@endphp
 @section('content')
 
+@foreach($news as $n)
 <section class="page_title translucent_bg_purple t_align_c">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">{{$baslik}}</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{$n->baslik}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">Home</a>
                 <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
             </li>
-            <li class="m_right_8 f_xs_none"><a href="/news" class="color_grey_light_3 d_inline_m m_right_10">News</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}/news"
+                                               class="color_grey_light_3 d_inline_m m_right_10">News</a>
             </li>
         </ul>
     </div>
 </section>
+
 <section class="section_offset">
     <div class="container">
-        <!--post-->
-        <article class="clearfix m_bottom_45 m_xs_bottom_30 blog_post">
-            <!--date,category,likes-->
-            <div class="blog_side_container w_sm_auto f_left f_xs_none m_xs_bottom_5">
-                <!--date-->
-                <a href="#"
-                   class="d_block d_xs_inline_b m_xs_right_5 blog_side_button r_corners bg_color_purple color_light not_hover t_align_c blog_date m_bottom_5">
-                    <span class="d_block day_of_the_month fw_light">{{date('d', strtotime($n->tarih))}}</span>
-                    <span class="d_block tt_uppercase fs_medium">{{date('M', strtotime($n->tarih))}}</span>
-                </a>
-                <?php /*
+
+        <div class="col-md-8">
+            <article class="clearfix m_bottom_45 m_xs_bottom_30 blog_post">
+                <!--date,category,likes-->
+                <div class="blog_side_container w_sm_auto f_left f_xs_none m_xs_bottom_5">
+                    <!--date-->
+                    <a href="#"
+                       class="d_block d_xs_inline_b m_xs_right_5 blog_side_button r_corners bg_color_purple color_light not_hover t_align_c blog_date m_bottom_5">
+                        <span class="d_block day_of_the_month fw_light">{{date('d', strtotime($n->tarih))}}</span>
+                        <span class="d_block tt_uppercase fs_medium">{{date('M', strtotime($n->tarih))}}</span>
+                    </a>
+                    <?php /*
                 <!--category-->
                 <a href="#"
                    class="d_block d_xs_inline_b m_xs_right_5 blog_side_button vc_child t_align_c color_purple bg_color_purple_hover color_light_hover bg_light_3 r_corners m_bottom_5 tr_all">
@@ -70,36 +72,36 @@ setlocale(LC_ALL, 'tr_TR.utf8');
                     <a class="addthis_counter"></a>
                 </div>
                 */
-                ?>
-            </div>
-            <!--post content-->
-            <figure>
-                @if($n->resimler != '')
-                <?php
-                $images = glob("images/news/" . $n->resimler . "/*.jpg");
-                ?>
-                @if(count($images) > 0)
-                <div class="m_bottom_20 r_corners wrapper simple_slideshow relative">
-                    <ul class="slides">
-                        @foreach($images as $i)
-                        <li><img src="/{{$i}}" alt="{{$n->baslik}}"></li>
-                        @endforeach
-                    </ul>
+                    ?>
                 </div>
-                @endif
-                @elseif($n->resim = '')
-                <img src="/images/kapak/{{$n->resim}}" alt="{{$n->baslik}}" class="r_corners m_bottom_20">
-                @endif
+                <!--post content-->
+                <figure>
+                    @if($n->resimler != '')
+                    <?php
+                    $images = glob("images/news/" . $n->resimler . "/*.jpg");
+                    ?>
+                    @if(count($images) > 0)
+                    <div class="m_bottom_20 r_corners wrapper simple_slideshow relative">
+                        <ul class="slides">
+                            @foreach($images as $i)
+                            <li><img src="/{{$i}}" alt="{{$n->baslik}}"></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    @elseif($n->resim = '')
+                    <img src="/images/kapak/{{$n->resim}}" alt="{{$n->baslik}}" class="r_corners m_bottom_20">
+                    @endif
 
-                <figcaption>
-                    <h3 class="fw_light color_dark">{{$n->baslik}}</h3>
-                    <ul class="dotted_list m_bottom_5 color_grey_light_2">
-                        <li class="m_right_15 relative d_inline_m">
-                            <a href="#" class="color_grey fs_small">
-                                <i>{{$n->yazar}}</i>
-                            </a>
-                        </li>
-                        <?php /*
+                    <figcaption>
+                        <h3 class="fw_light color_dark">{{$n->baslik}}</h3>
+                        <ul class="dotted_list m_bottom_15 color_grey_light_2">
+                            <li class="m_right_15 relative d_inline_m">
+                                <a href="#" class="color_grey fs_small">
+                                    <i>{{$n->yazar}}</i>
+                                </a>
+                            </li>
+                            <?php /*
                         <li class="m_right_15 relative d_inline_m">
                             <a href="#" class="fs_medium color_grey"><i>Mobile</i></a>,
                             <a href="#" class="fs_medium color_grey"><i>Technology</i></a>
@@ -111,13 +113,13 @@ setlocale(LC_ALL, 'tr_TR.utf8');
                             </a>
                         </li>
                             */
-                        ?>
-                    </ul>
-                    <div class="fw_light m_bottom_12">
-                        {!!$n->icerik!!}
-                    </div>
+                            ?>
+                        </ul>
+                        <div class="fw_light m_bottom_12">
+                            {!!$n->icerik!!}
+                        </div>
 
-                    <?php /*
+                        <?php /*
                     <!--tags-->
                     <i class="icon-tag-1 color_grey_light_2 d_inline_m m_right_5 fs_large tags_icon"></i>
                     <ul class="d_inline_m fw_light">
@@ -126,11 +128,26 @@ setlocale(LC_ALL, 'tr_TR.utf8');
                         <li class="d_inline_m"><a href="#" class="color_purple"> </a></li>
                     </ul>
                     */
-                    ?>
-                </figcaption>
-            </figure>
-        </article>
+                        ?>
+                    </figcaption>
+                </figure>
+            </article>
+        </div>
+        <div class="col-md-4 col-lg-4 translucent_bg_purple">
+            <h4 class="page-header fw_light color_light ">Other News</h4>
+            <ul class="vr_list_type_2 color_dark fw_light">
+                @foreach($otherNews as $on)
+                <li id="news-item-{{$on->id}}" class="m_bottom_12">
+                    <div class="icon_wrap_size_0 circle color_grey_light_5 f_left">
+                        <i class="icon-angle-right"></i>
+                    </div>
+                    <a class="color_grey_light_3 color_light_hover" href="/{{App::getLocale()}}/news/{{$on->slug}}">{{$on->baslik}}</a>
+                </li>
+                @endforeach
+            </ul>
+            <hr>
+        </div>
     </div>
 </section>
-
+@endforeach
 @stop

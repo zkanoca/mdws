@@ -10,9 +10,9 @@ use App\About;
 class AboutController extends Controller
 {
 
-    public function index($page = 'who-am-i')
+    public function index($locale = 'tr', $page = 'who-am-i')
     {
-        $about = About::where('page', $page)->get();
+        $about = About::where([['page', $page], ['dil', $locale]])->get();
 
         if (is_null($about)) {
             abort(404);

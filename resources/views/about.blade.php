@@ -1,5 +1,9 @@
 @extends('master')
 
+@section('page_title')
+{{trans('about.about')}}
+@stop
+
 @section('nav_about_current')
 current
 @stop
@@ -8,12 +12,12 @@ current
 
 <section class="page_title translucent_bg_color_scheme image_fixed t_align_c relative wrapper">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">About Mithat DURAK</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{trans('about.about_mithat_durak')}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a><i
-                    class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i></li>
-            <li class="color_grey_light_3">About</li>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
+            </li>
         </ul>
     </div>
 </section>

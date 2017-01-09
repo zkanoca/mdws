@@ -3,7 +3,7 @@
 
 @section('page_title')
 
-Contact
+{{trans('nav.contact')}}
 
 @stop
 
@@ -12,20 +12,18 @@ Contact
 current
 @stop
 
-@section('title')
-Contact
-@stop
 
 @section('content')
 
 
 <section class="page_title translucent_bg_color_scheme image_fixed image_bg_14 t_align_c relative wrapper">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">Contact</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{trans('nav.contact')}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/"
-                                               class="color_grey_light_3 d_inline_m m_right_10">Home</a></li>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
+            </li>
         </ul>
     </div>
 </section>
@@ -36,7 +34,7 @@ Contact
 <div class="container clearfix">
 <div class="row">
 <div class="col-lg-6 col-md-6 col-sm-6 m_xs_bottom_30">
-    <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Contact Information</h3>
+    <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">{{trans('contact.contact_information')}}</h3>
 
     <p class="m_bottom_35 heading_2 t_align_c"></p>
 
@@ -62,7 +60,7 @@ Contact
                 <div class="d_inline_m icon_wrap_size_1 color_pink circle m_right_10">
                     <i class="icon-mail-alt"></i>
                 </div>
-                <a href="mailto:#" class="color_black color_pink_hover">{{$veri->eposta1}}</a>
+                <a href="mailto:mithat@mithatdurak.com" class="color_black color_pink_hover">{{$veri->eposta1}}</a>
             </li>
             <?php /*li>
                         <div class="d_inline_m icon_wrap_size_1 color_pink circle m_right_10">
@@ -92,7 +90,7 @@ Contact
             ?>
         </ul>
     </div>
-    <h5 class="color_dark m_bottom_20 fw_light">Stay Connected</h5>
+    <h5 class="color_dark m_bottom_20 fw_light">{{trans('contact.stay_connected')}}</h5>
     <ul class="hr_list social_icons">
         <!--tooltip_container class is required-->
         <li class="m_right_15 m_bottom_15 tooltip_container">
@@ -187,34 +185,34 @@ Contact
     </div>
 
     @endif
-    <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Contact Form</h3>
+    <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">{{trans('contact.contact_form')}}</h3>
 
-    <p class="m_bottom_35 heading_2 t_align_c">Have any question? Drop me a message. I will get back to you
-        soon. </p>
+    <p class="m_bottom_35 heading_2 t_align_c">{{trans('contact.have_any_question')}}</p>
 
     {!! Form::open(['url'=>'contact/sendMessage']) !!}
     <div class="form-group row">
         <div class="col-md-4">
 
             {!!Form::text('name', null,
-            ['class' => 'w_full r_corners fw_light', 'required'=>'required', 'placeholder'=>'Your Name'])
+            ['class' => 'w_full r_corners fw_light', 'required'=>'required', 'placeholder'=>trans('contact.your_name')])
             !!}
         </div>
         <div class="col-md-4">
             {!!Form::email('email', null,
-            ['class' => 'w_full r_corners fw_light', 'required'=>'required', 'placeholder'=>'Your Email'])
+            ['class' => 'w_full r_corners fw_light', 'required'=>'required',
+            'placeholder'=>trans('contact.your_email')])
             !!}
         </div>
         <div class="col-md-4">
             {!!Form::text('phone', null,
-            ['class' => 'w_full r_corners fw_light', 'placeholder'=>'Your Phone Number' ]) !!}
+            ['class' => 'w_full r_corners fw_light', 'placeholder'=>trans('contact.your_phone_number') ]) !!}
         </div>
 
     </div>
     <div class="form-group">
         {!!
         Form::text('subject', null, [ 'class' => 'w_full r_corners fw_light',
-        'placeholder'=>'Subject',
+        'placeholder'=>trans('contact.subject'),
         'required' => 'required'
         ]
         )
@@ -224,11 +222,12 @@ Contact
 
     <div class="form-group">
         {!!Form::textarea('message', null,
-        ['class' => 'w_full r_corners fw_light height_3', 'required'=>'required', 'placeholder'=>'Your&nbsp;Message'])
+        ['class' => 'w_full r_corners fw_light height_3', 'required'=>'required',
+        'placeholder'=>trans('contact.your_message')])
         !!}
     </div>
     <div class="form-group">
-        {!!Form::button('<i class="fa fa-paper-plane"></i> Send Message',
+        {!!Form::button('<i class="glyphicon glyphicon-send"></i> ' . trans("contact.send_message") ,
         ['class' => 'button_type_5 color_blue transparent r_corners fs_medium tr_all m_right_10
         m_sm_bottom_10',
         'type'=>'submit']) !!}
