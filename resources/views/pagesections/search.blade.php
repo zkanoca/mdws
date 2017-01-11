@@ -8,6 +8,6 @@
     </div>
     <!--searchform-->
     <form role="search" class="bg_light animate_ vc_child type_4 t_align_r fw_light tr_all trf_xs_none">
-        <input type="text" name="search" placeholder="Search" class="r_corners d_inline_m">
+        <input type="text" name="search" placeholder="{{trans('nav.search')}}" class="r_corners d_inline_m">
     </form>
 </div>

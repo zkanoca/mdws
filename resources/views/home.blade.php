@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('page_title')
-Home
+{{trans('nav.home')}}
 @stop
 
 @section('nav_home_current')
@@ -9,7 +9,6 @@ current
 @stop
 
 @section('content')
-
 <section class="section_offset_3">
     <div class="container">
         <!--slider-->
@@ -55,7 +54,7 @@ current
                                     <span class="d_inline_m m_right_5 icon_wrap_size_0 circle color_grey_light tr_all">
                                         <i class="icon-angle-right"></i>
                                     </span>
-                                    Read More
+                                    {{trans('home.read_more')}}
                                 </a>
                             </div>
                         </li>
@@ -115,7 +114,7 @@ current
 <section class="section_offset_3 bg_light_2 relative">
     <div class="container">
         <div class="row">
-            <h3 class="fw_light">Trainings</h3>
+            <h3 class="fw_light m_bottom_20">{{trans('home.trainings')}}</h3>
 
             <div class="owl-carousel"
                  data-plugin-options='{"itemsCustom": [[992,4],[768,3],[450,1],[10,1]],"autoPlay":true,"singleItem" : false}'
@@ -190,139 +189,227 @@ current
 
 <script>
     $(function ($) {
-        $('#atiflar').highcharts({
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Citations to My Publications'
-            },
-            xAxis: {
+            $('#atiflar').highcharts({
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: '{{trans('publication.citations_to_my_publications')}}'
+                },
+                xAxis
+            :
+            {
                 categories: [<?php echo Helper::yillar($citationCounts)?>]
-            },
+            }
+            ,
             yAxis: {
                 min: 0,
-                title: {
-                    text: 'Count'
+                    title
+            :
+                {
+                    text: '{{trans('
+                    publication.count
+                    ')}}'
                 }
-            },
+            }
+            ,
             legend: {
                 itemStyle: {
                     font: '9px Arial, Helvetica, sans-serif'
-                },
+                }
+            ,
                 layout: 'horizontal',
-                align: 'left',
-                verticalAlign: 'bottom',
-                borderWidth: 0
-            },
+                    align
+            :
+                'left',
+                    verticalAlign
+            :
+                'bottom',
+                    borderWidth
+            :
+                0
+            }
+            ,
             plotOptions: {
                 series: {
                     stacking: 'normal'
                 }
-            },
+            }
+            ,
             series: [
                 {
-                    name: 'On SSCI/SCI Indexes (By others)',
-                    data: [<?php echo Helper::sutun($citationCounts, 1);?>]
-                },
-                {
-                    name: 'On SSCI/SCI Indexes (By myself)',
-                    data: [<?php echo Helper::sutun($citationCounts,2);?>]
-                },
-                {
-                    name: 'In Journals on Other Indexes (ProQuest, PsycINFO, PsycLIT, SCOPUS etc.)',
-                    data: [<?php echo Helper::sutun($citationCounts,3);?>]
-                },
-                {
-                    name: 'In Other Journals and Thesis',
-                    data: [<?php echo Helper::sutun($citationCounts,4);?>]
-                }
-            ]
-        });
+                    name: '{{trans('publication.on_ssci_sci_indexes_by_others')}}',
+                data
+            :
+            [<?php echo Helper::sutun($citationCounts, 1);?>]
+        },
+        {
+            name: '{{trans('publication.on_ssci_sci_indexes_by_myself
+    ')}}',
+        data
+    :
+    [<?php echo Helper::sutun($citationCounts,2);?>]
+    },
+    {
+        name: '{{trans('
+        publication.in_journals_on_other_indexes
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($citationCounts,3);?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.in_other_journals_and_thesis
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($citationCounts,4);?>]
+    }
+    ]
+    })
+    ;
 
 
-        $('#yayinlar').highcharts({
+    $('#yayinlar').highcharts({
             chart: {
                 type: 'bar'
             },
             title: {
-                text: 'Publications'
-            },
-            xAxis: {
+                text: '{{trans('publication.yayinlar')}}'
+        },
+        xAxis
+    :
+    {
 
-                categories: [<?php echo Helper::yillar($publicationCounts)?>]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Count'
-                }
-            },
-            legend: {
-                itemStyle: {
-                    font: '9px Arial, Helvetica, sans-serif'
-                },
-                layout: 'horizontal',
-                align: 'left',
-                verticalAlign: 'bottom',
-                borderWidth: 0
-            },
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            },
-            series: [
-                {
-                    name: 'A. The articles published in journals appear in Thomson Reuters indexes (SCI, SSCI, AHCI)',
+        categories: [<?php echo Helper::yillar($publicationCounts)?>]
+    }
+    ,
+    yAxis: {
+        min: 0,
+            title
+    :
+        {
+            text: '{{trans('
+            publication.count
+            ')}}'
+        }
+    }
+    ,
+    legend: {
+        itemStyle: {
+            font: '9px Arial, Helvetica, sans-serif'
+        }
+    ,
+        layout: 'horizontal',
+            align
+    :
+        'left',
+            verticalAlign
+    :
+        'bottom',
+            borderWidth
+    :
+        0
+    }
+    ,
+    plotOptions: {
+        series: {
+            stacking: 'normal'
+        }
+    }
+    ,
+    series: [
+        {
+            name: '{{trans('publication.cat_a')}}',
 
-                    data: [<?php echo Helper::sutun($publicationCounts, 1)?>]
-                },
-                {
-                    name: 'B. The articles published in journals appear in other indexes (e.g., ProQuest, PsycINFO, PsycLIT, SCOPUS)',
-                    data: [<?php echo Helper::sutun($publicationCounts, 2)?>]
+        data
+    :
+    [<?php echo Helper::sutun($publicationCounts, 1)?>]
+    },
+    {
+        name: '{{trans('
+        publication.cat_b
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 2)?>]
 
-                },
-                {
-                    name: 'C. Papers presented at international scientific conventions',
-                    data: [<?php echo Helper::sutun($publicationCounts, 3)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_c
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 3)?>]
 
-                },
-                {
-                    name: 'D. Books and book chapters published nationally/internationally',
-                    data: [<?php echo Helper::sutun($publicationCounts, 4)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_d
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 4)?>]
 
-                },
-                {
-                    name: 'E. Papers presented at national scientific conventions',
-                    data: [<?php echo Helper::sutun($publicationCounts, 5)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_e
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 5)?>]
 
-                },
-                {
-                    name: 'F. Papers presented at national scientific conventions',
-                    data: [<?php echo Helper::sutun($publicationCounts, 6)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_f
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 6)?>]
 
-                },
-                {
-                    name: 'G. Other Publications',
-                    data: [<?php echo Helper::sutun($publicationCounts, 7)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_g
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 7)?>]
 
-                },
-                {
-                    name: 'H. Thesis',
-                    data: [<?php echo Helper::sutun($publicationCounts, 8)?>]
+    }
+    ,
+    {
+        name: '{{trans('
+        publication.cat_h
+        ')}}',
+            data
+    :
+        [<?php echo Helper::sutun($publicationCounts, 8)?>]
 
-                }
-            ]
-        });
-    });
+    }
+    ]
+    })
+    ;
+    })
+    ;
 </script>
-<section class="section_offset_2">
+<section class="section_offset_2 ">
     <div class="container">
         <div class="row">
+            <h3 class="fw_light m_bottom_20">{{trans('publication.publication_stats')}}</h3>
+
             <div class="col-lg-6 col-md-6">
 
-                <h4 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Publications</h4>
 
                 <div id="yayinlar">
                 </div>
@@ -330,7 +417,6 @@ current
             </div>
             <div class="col-lg-6 col-md-6">
 
-                <h4 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">Citations to My Publications</h4>
 
                 <div id="atiflar">
                 </div>

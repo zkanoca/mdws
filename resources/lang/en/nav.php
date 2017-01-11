@@ -22,6 +22,7 @@ return [
     'supervision' => 'Supervision',
     'measurement_evaluation' => 'Measurement & Evaluation',
     'contact' => 'Contact',
+    'search' => 'Search',
 
 
 ];

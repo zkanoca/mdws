@@ -1,11 +1,8 @@
 <?php
 $baslik = '';
-
 foreach ($news as $n):
     $baslik = $n->baslik;
 endforeach;
-
-
 ?>
 @extends('master')
 
@@ -26,19 +23,17 @@ current
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
             <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
-                                               class="color_grey_light_3 d_inline_m m_right_10">Home</a>
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
                 <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
             </li>
             <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}/news"
-                                               class="color_grey_light_3 d_inline_m m_right_10">News</a>
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('news.news')}}</a>
             </li>
         </ul>
     </div>
 </section>
-
 <section class="section_offset">
     <div class="container">
-
         <div class="col-md-8">
             <article class="clearfix m_bottom_45 m_xs_bottom_30 blog_post">
                 <!--date,category,likes-->
@@ -47,7 +42,7 @@ current
                     <a href="#"
                        class="d_block d_xs_inline_b m_xs_right_5 blog_side_button r_corners bg_color_purple color_light not_hover t_align_c blog_date m_bottom_5">
                         <span class="d_block day_of_the_month fw_light">{{date('d', strtotime($n->tarih))}}</span>
-                        <span class="d_block tt_uppercase fs_medium">{{date('M', strtotime($n->tarih))}}</span>
+                        <span class="d_block tt_uppercase fs_medium">{{trans('calendar.s'. date('M', strtotime($n->tarih)))}}</span>
                     </a>
                     <?php /*
                 <!--category-->
@@ -94,7 +89,7 @@ current
                     @endif
 
                     <figcaption>
-                        <h3 class="fw_light color_dark">{{$n->baslik}}</h3>
+                        <h3 class="fw_light color_dark lh_large">{{$n->baslik}}</h3>
                         <ul class="dotted_list m_bottom_15 color_grey_light_2">
                             <li class="m_right_15 relative d_inline_m">
                                 <a href="#" class="color_grey fs_small">
@@ -134,7 +129,7 @@ current
             </article>
         </div>
         <div class="col-md-4 col-lg-4 translucent_bg_purple">
-            <h4 class="page-header fw_light color_light ">Other News</h4>
+            <h4 class="page-header fw_light color_light ">{{trans('news.other_news')}}</h4>
             <ul class="vr_list_type_2 color_dark fw_light">
                 @foreach($otherNews as $on)
                 <li id="news-item-{{$on->id}}" class="m_bottom_12">

@@ -4,7 +4,7 @@
 News
 @stop
 
-@section('nav_scientific_studies_current')
+@section('nav_home_current')
 current
 @stop
 
@@ -12,7 +12,7 @@ current
 
 <section class="page_title translucent_bg_purple t_align_c">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">News</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{trans('news.news')}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
             <li class="m_right_8 f_xs_none">
@@ -29,15 +29,24 @@ current
 
                 @foreach($news as $n)
 
-                <h4 class="color_dark fw_light m_bottom_15 page-header">
-                    <a href="/{{App::getLocale()}}/news/{{$n->slug}}">{{ $n->baslik }}
-                </h4>
+                <h5 class="color_dark fw_light m_bottom_15 page-header">
+                    <small>
+                        @if(date('Y', strtotime($n->tarih)) == date('Y'))
+                        {{date('j' , strtotime($n->tarih))}} {{trans('calendar.l' . date('j' , strtotime($n->tarih)))}}
+                        @else
+                        {{date('j' , strtotime($n->tarih))}} {{trans('calendar.s' .date('M' , strtotime($n->tarih)))}}
+                        {{date('Y', strtotime($n->tarih))}}
+                        @endif
+                    </small>
+
+                    <a href="/{{App::getLocale()}}/news/{{$n->slug}}">{{ $n->baslik }}</a>
+
+                </h5>
 
                 @endforeach
 
             </div>
             <div class="col-md-4">
-
             </div>
         </div>
     </div>

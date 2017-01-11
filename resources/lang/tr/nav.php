@@ -22,6 +22,7 @@ return [
     'supervision' => 'Süpervizyon',
     'measurement_evaluation' => 'Ölçme-Değerlendirme',
     'contact' => 'İletişim',
+    'search' => 'Ara',
 
 
 ];
