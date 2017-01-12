@@ -11,6 +11,7 @@ return [
     'kisilik_psikopataloji_testleri' => 'Kişilik-Psikopatoloji Testleri',
     'adli_degerlendirme_testleri' => 'Adli Değerlendirme Testleri',
     'noropsikolojik_testler' => 'Nöropsikolojik Testler',
+    //deneme
 
 
 ];
