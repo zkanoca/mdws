@@ -28,7 +28,7 @@
     <![endif]-->
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="author" content="Özkan ÖZLÜ - ozkanozlu@hotmail.com">
     <meta name="keywords" content="Psikoloji, Psychology, geropsikoloji, geropsychology, mithat durak">
     <meta name="description" content="Mithat Durak's personal web site">

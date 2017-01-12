@@ -42,6 +42,8 @@ $status['1'] = trans('project.planning');
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-lg-9">
+
+
                 <h3 class="fw_light page-header color_dark" id="project-detail-{{$p->id}}">{{$p->proje}}</h3>
 
                 <div>

@@ -16,9 +16,7 @@ foreach ($serviceContent as $c) {
 current
 @stop
 
-@php
-setlocale(LC_ALL, 'tr_TR.utf8');
-@endphp
+
 @section('content')
 
 @foreach($serviceContent as $c)
@@ -27,17 +25,18 @@ setlocale(LC_ALL, 'tr_TR.utf8');
         <h1 class="color_light fw_light m_bottom_5">{{$c->baslik}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
                 <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
             </li>
-            <li class="m_right_8 f_xs_none"><a href="/services" class="color_grey_light_3 d_inline_m m_right_10">Services</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}/services"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.services')}}</a>
                 <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
             </li>
-            <li class="m_right_8 f_xs_none"><a href="/services/{{$c->category_slug}}"
-                                               class="color_grey_light_3 d_inline_m m_right_10">{{$c->category}}</a>
-                <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}/services/{{$c->category_slug}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.' .
+                    $c->category)}}</a>
             </li>
-            <li class="m_right_8 f_xs_none color_grey_light_3 d_inline_m m_right_10">{{$c->baslik}}</li>
         </ul>
     </div>
 </section>
@@ -51,7 +50,7 @@ setlocale(LC_ALL, 'tr_TR.utf8');
                 <a href="#"
                    class="d_block d_xs_inline_b m_xs_right_5 blog_side_button r_corners bg_color_orange color_light not_hover t_align_c blog_date m_bottom_5">
                     <span class="d_block day_of_the_month fw_light">{{date('d', strtotime($c->tarih))}}</span>
-                    <span class="d_block tt_uppercase fs_medium">{{date('M', strtotime($c->tarih))}}</span>
+                    <span class="d_block tt_uppercase fs_medium">{{trans('calendar.s' . date('M', strtotime($c->tarih)))}}</span>
                 </a>
                 <?php /*
                 <!--category-->
@@ -80,9 +79,10 @@ setlocale(LC_ALL, 'tr_TR.utf8');
             </div>
             <!--post content-->
             <figure>
-                @if($c->resimler != '' && is_dir("/images/services/{{$c->resimler}}"))
+                @if($c->resimler != '' &&
+                is_dir("/images/services/{{$c->category_slug}}/{{$c->id}}-{{$c->content_slug}}/{{$c->resimler}}"))
                 <?php
-                $images = glob("/images/services/" . $c->resimler . "/*.jpg");
+                    $images = glob("/images/services/" .  $c->category_slug . "/" . $c->id . "-" . $c->content_slug . "/" . $c->resimler . "/*.jpg");
                 ?>
                 @if(count($images) > 0)
                 <div class="m_bottom_20 r_corners wrapper simple_slideshow relative">
@@ -93,8 +93,10 @@ setlocale(LC_ALL, 'tr_TR.utf8');
                     </ul>
                 </div>
                 @endif
-                @elseif($c->resim = '' && file_exists('/images/kapak/{{$c->resim}}'))
-                <img src="/images/kapak/{{$c->resim}}" alt="{{$c->baslik}}" class="r_corners m_bottom_20">
+                @elseif($c->resim = '' &&
+                file_exists('/images/services/{{$c->category_slug}}/{{$c->id}}-{{$c->content_slug}}/{{$c->resim}}'))
+                    <img src="/images/services/{{$c->category_slug}}/{{$c->id}}-{{$c->content_slug}}/{{$c->resim}}"
+                         alt="{{$c->baslik}}" class="r_corners m_bottom_20">
                 @else
                 <img src="/images/services/default.jpg" alt="{{$c->baslik}}" class="r_corners m_bottom_20">
                 @endif

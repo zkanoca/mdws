@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('page_title')
-Trainings
+    {{trans('nav.trainings')}}
 @stop
 
 @section('nav_services_current')
@@ -16,14 +16,15 @@ current
 @section('content')
 <section class="page_title translucent_bg_orange t_align_c">
     <div class="container">
-        <h1 class="color_light fw_light m_bottom_5">Trainings</h1>
+        <h1 class="color_light fw_light m_bottom_5">{{trans('nav.trainings')}}</h1>
         <!--breadcrumbs-->
         <ul class="hr_list d_inline_m breadcrumbs">
-            <li class="m_right_8 f_xs_none"><a href="/" class="color_grey_light_3 d_inline_m m_right_10">Home</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
                 <i class="icon-angle-right d_inline_m color_grey_light_3 fs_small"></i>
             </li>
-            <li class="m_right_8 f_xs_none"><a href="/services"
-                                               class="color_grey_light_3 d_inline_m m_right_10">Services</a>
+            <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}/services"
+                                               class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.services')}}</a>
             </li>
         </ul>
     </div>
@@ -38,7 +39,7 @@ current
                 <article class="r_corners border_grey">
                     <!--post content-->
                     <figure>
-                        <a href="/services/trainings/{{$sc->content_slug}}"
+                        <a href="/{{App::getLocale()}}/services/trainings/{{$sc->content_slug}}"
                            class="d_block wrapper r_corners m_bottom_20">
                             @if(file_exists('/images/services/trainings/{{$sc->resim}}'))
                             <img src="/images/services/trainings/{{$sc->resim}}" alt="{{$sc->baslik}}">
@@ -48,8 +49,8 @@ current
                         </a>
                         <figcaption>
                             <h4 class="fw_light m_bottom_5 fs_middle"><a
-                                    href="/services/trainings/{{$sc->content_slug}}"
-                                    class="color_dark color_orange_hover tr_all">{{$sc->baslik}}</a></h4>
+                                        href="/{{App::getLocale()}}/services/trainings/{{$sc->content_slug}}"
+                                        class="color_dark color_orange_hover tr_all">{{$sc->baslik}}</a></h4>
                             <ul class="dotted_list m_bottom_8 color_grey_light_2 lh_ex_small">
                                 <?php /*
                                 <li class="m_right_15 relative d_inline_m">
@@ -61,7 +62,7 @@ current
                                 ?>
                                 <li class="m_right_15 relative d_inline_m">
                                     <a href="#" class="color_grey fs_small">
-                                        <i>{{date('j M Y', strtotime($sc->tarih))}}</i>
+                                        <i>{{date('j', strtotime($sc->tarih))}} {{trans('calendar.s' . date('M', strtotime($sc->tarih)))}} {{date('Y', strtotime($sc->tarih))}}</i>
                                     </a>
                                 </li>
                                 <li class="m_right_15 relative d_inline_m">
@@ -105,8 +106,6 @@ current
                 </article>
             </div>
             @endforeach
-
-
         </section>
     </div>
     <?php /*div class="t_align_c">
@@ -116,6 +115,4 @@ current
     </div */
     ?>
 </section>
-
-
 @stop

@@ -38,7 +38,7 @@
                         </a>
                         @endif
                         <a href="/{{App::getLocale()}}/news/{{$n->slug}}"
-                           class="color_dark m_bottom_5 d_block lh_small fw_light fs_small">{{$n->baslik}}</a>
+                           class="color_dark color_dark_hover m_bottom_5 d_block lh_small fw_light fs_small">{{$n->baslik}}</a>
 
                         <p class="fs_small color_grey"><i>{{date('j', strtotime($n->tarih))}} {{trans('calendar.s'
                                 .date('M', strtotime($n->tarih)))}}</i></p>

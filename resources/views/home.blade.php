@@ -127,10 +127,10 @@ current
                     <div class="popup_wrap relative r_corners wrapper m_bottom_20 d_xs_inline_b">
                         <?php
 
-                        $resim = '/images/default.jpg';
+                        $resim = '/images/services/default.jpg';
 
-                        if ($t->resim != '' && file_exists('/images/trainings/' . $t->resimler . '/' . $t->resim)) {
-                            $resim = '/images/trainings/' . $t->resimler . '/' . $t->resim;
+                        if ($t->resim != '' && file_exists('/images/' . $t->category_slug . '/' . $t->id . '-' . $t->content_slug . '/' . $t->resimler . '/' . $t->resim)) {
+                            $resim = '/images/' . $t->category_slug . '/' . $t->id . '-' . $t->content_slug . '/' . $t->resimler . '/' . $t->resim;
                         }
 
                         ?>
@@ -151,20 +151,24 @@ current
                     </div>
                     <!--description-->
                     <figcaption>
-                        <h6 class="lh_large m_bottom_3"><a href="/{{App::getLocale()}}/services/trainings/{{$t->slug}}"
-                                                           class="color_dark tr_all">{{$t->baslik}}</a></h6>
+                        <h6 class="lh_large m_bottom_3 text-center"><a
+                                    href="/{{App::getLocale()}}/services/trainings/{{$t->slug}}"
+                                    class="color_dark tr_all">{{$t->baslik}}</a></h6>
+                        <?php /*
                         <!--project's info-->
                         <ul class="dotted_list m_bottom_8 color_grey_light_2 lh_ex_small">
-                            <!--li class="m_right_15 relative d_inline_m">
+
+                            <li class="m_right_15 relative d_inline_m">
                                 <a href="#" class="color_grey_light_2 fs_small">
                                     <i class="icon-picture"></i>
                                 </a>
-                            </li-->
+                            </li>
                             <li class="m_right_15 relative d_inline_m">
                                 <a href="#" class="color_grey fs_small">
                                     <i>{{date('j M', strtotime($t->tarih))}}</i>
                                 </a>
                             </li>
+                            */ ?>
 
                         </ul>
                     </figcaption>
@@ -183,227 +187,104 @@ current
         <i class="icon-right-open-big"></i>
     </button>
 </section>
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-<script>
-    $(function ($) {
-            $('#atiflar').highcharts({
-                    chart: {
-                        type: 'bar'
-                    },
-                    title: {
-                        text: '{{trans('publication.citations_to_my_publications')}}'
-                },
-                xAxis
-            :
-            {
-                categories: [<?php echo Helper::yillar($citationCounts)?>]
-            }
-            ,
-            yAxis: {
-                min: 0,
-                    title
-            :
-                {
-                    text: '{{trans('
-                    publication.count
-                    ')}}'
-                }
-            }
-            ,
-            legend: {
-                itemStyle: {
-                    font: '9px Arial, Helvetica, sans-serif'
-                }
-            ,
-                layout: 'horizontal',
-                    align
-            :
-                'left',
-                    verticalAlign
-            :
-                'bottom',
-                    borderWidth
-            :
-                0
-            }
-            ,
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            }
-            ,
-            series: [
-                {
-                    name: '{{trans('publication.on_ssci_sci_indexes_by_others')}}',
-                data
-            :
-            [<?php echo Helper::sutun($citationCounts, 1);?>]
-        },
-        {
-            name: '{{trans('publication.on_ssci_sci_indexes_by_myself
-    ')}}',
-        data
-    :
-    [<?php echo Helper::sutun($citationCounts,2);?>]
-    },
-    {
-        name: '{{trans('
-        publication.in_journals_on_other_indexes
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($citationCounts,3);?>]
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.in_other_journals_and_thesis
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($citationCounts,4);?>]
-    }
-    ]
-    })
-    ;
-
-
-    $('#yayinlar').highcharts({
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: '{{trans('publication.yayinlar')}}'
-        },
-        xAxis
-    :
-    {
-
-        categories: [<?php echo Helper::yillar($publicationCounts)?>]
-    }
-    ,
-    yAxis: {
-        min: 0,
-            title
-    :
-        {
-            text: '{{trans('
-            publication.count
-            ')}}'
-        }
-    }
-    ,
-    legend: {
-        itemStyle: {
-            font: '9px Arial, Helvetica, sans-serif'
-        }
-    ,
-        layout: 'horizontal',
-            align
-    :
-        'left',
-            verticalAlign
-    :
-        'bottom',
-            borderWidth
-    :
-        0
-    }
-    ,
-    plotOptions: {
-        series: {
-            stacking: 'normal'
-        }
-    }
-    ,
-    series: [
-        {
-            name: '{{trans('publication.cat_a')}}',
-
-        data
-    :
-    [<?php echo Helper::sutun($publicationCounts, 1)?>]
-    },
-    {
-        name: '{{trans('
-        publication.cat_b
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 2)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_c
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 3)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_d
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 4)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_e
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 5)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_f
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 6)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_g
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 7)?>]
-
-    }
-    ,
-    {
-        name: '{{trans('
-        publication.cat_h
-        ')}}',
-            data
-    :
-        [<?php echo Helper::sutun($publicationCounts, 8)?>]
-
-    }
-    ]
-    })
-    ;
-    })
-    ;
-</script>
 <section class="section_offset_2 ">
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+    <script>
+        $(function ($) {
+            $('#atiflar').highcharts({
+                chart: {type: 'bar'},
+                title: {text: '{{trans("publication.citations_to_my_publications")}}'},
+                xAxis: {categories: [<?php echo Helper::yillar($citationCounts)?>]},
+                yAxis: {
+                    min: 0,
+                    title: {text: '{{trans("publication.count")}}'}
+                },
+                legend: {
+                    itemStyle: {font: '9px Arial, Helvetica, sans-serif'},
+                    layout: 'horizontal',
+                    align: 'left',
+                    verticalAlign: 'bottom',
+                    borderWidth: 0
+                },
+                plotOptions: {series: {stacking: 'normal'}},
+                series: [
+                    {
+                        name: '{{trans("publication.on_ssci_sci_indexes_by_others")}}',
+                        data: [<?php echo Helper::sutun($citationCounts, 1);?>]
+                    },
+                    {
+                        name: '{{trans("publication.on_ssci_sci_indexes_by_myself")}}',
+                        data: [<?php echo Helper::sutun($citationCounts,2);?>]
+                    },
+                    {
+                        name: '{{trans("publication.in_journals_on_other_indexes")}}',
+                        data: [<?php echo Helper::sutun($citationCounts,3);?>]
+                    },
+                    {
+                        name: '{{trans("publication.in_other_journals_and_thesis")}}',
+                        data: [<?php echo Helper::sutun($citationCounts,4);?>]
+                    }
+                ]
+            });
+
+
+            $('#yayinlar').highcharts({
+                chart: {type: 'bar'},
+                title: {text: '{{trans("publication.yayinlar")}}'},
+                xAxis: {categories: [<?php echo Helper::yillar($publicationCounts)?>]},
+                yAxis: {
+                    min: 0,
+                    title: {text: '{{trans("publication.count")}}'}
+                },
+                legend: {
+                    itemStyle: {font: '9px Arial, Helvetica, sans-serif'},
+                    layout: 'horizontal',
+                    align: 'left',
+                    verticalAlign: 'bottom',
+                    borderWidth: 0
+                },
+                plotOptions: {
+                    series: {stacking: 'normal'}
+                },
+                series: [
+                    {
+                        name: '{{trans("publication.cat_a")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 1)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_b")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 2)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_c")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 3)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_d")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 4)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_e")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 5)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_f")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 6)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_g")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 7)?>]
+                    },
+                    {
+                        name: '{{trans("publication.cat_h")}}',
+                        data: [<?php echo Helper::sutun($publicationCounts, 8)?>]
+                    }
+                ]
+            });
+        });
+    </script>
     <div class="container">
         <div class="row">
             <h3 class="fw_light m_bottom_20">{{trans('publication.publication_stats')}}</h3>
