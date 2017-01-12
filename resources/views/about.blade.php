@@ -15,8 +15,10 @@
             <h1 class="color_light fw_light m_bottom_5">{{trans('about.about_mithat_durak')}}</h1>
             <!--breadcrumbs-->
             <ul class="hr_list d_inline_m breadcrumbs">
-                <li class="m_right_8 f_xs_none"><a href="/{{App::getLocale()}}"
-                                                   class="color_grey_light_3 d_inline_m m_right_10">{{trans('nav.home')}}</a>
+                <li class="m_right_8 f_xs_none">
+                    <a href="/{{App::getLocale()}}" class="color_grey_light_3 d_inline_m m_right_10">
+                        {{trans('nav.home')}}
+                    </a>
                 </li>
             </ul>
         </div>

@@ -81,7 +81,7 @@
         </li>
         <li class="@yield('nav_measurement_and_evaluation_current')">
             <a class=" d_block fs_large color_dark"
-               href="/{{App::getLocale()}}/measurement_and_evaluation">{{trans('nav.measurement_evaluation')}}</a>
+               href="/{{App::getLocale()}}/measurement-and-evaluation">{{trans('nav.measurement_evaluation')}}</a>
         </li>
 
         <li class="@yield('nav_contact_current')">

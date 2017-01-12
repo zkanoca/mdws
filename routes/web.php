@@ -48,5 +48,5 @@ Route::get('/{locale}/services/{category_slug}', 'ServicesController@get_service
 Route::get('/{locale}/services/{category_slug}/{content_slug}', 'ServicesController@get_service_content');
 
 //Measurement & Evaluation
-Route::get('/{locale}/measurement_and_evaluation', 'ScalesController@index');
-Route::get('/{locale}/measurement_and_evaluation/{slug}', 'ScalesController@get_scale');
+Route::get('/{locale}/measurement-and-evaluation', 'ScalesController@index');
+Route::get('/{locale}/measurement-and-evaluation/{slug}', 'ScalesController@get_scale');
