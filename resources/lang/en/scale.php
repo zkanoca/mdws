@@ -11,6 +11,17 @@ return [
     'kisilik_psikopataloji_testleri' => 'Personality-Psychopatology Tests',
     'adli_degerlendirme_testleri' => 'Forensic Evaluation Tests',
     'noropsikolojik_testler' => 'Neuropsychological Tests',
+    'about_scale' => 'About Scale',
+    'questionnaire' => 'Questionnaire',
+    'instructions' => 'Instructions',
+    'original' => 'Original',
+    'implementation' => 'Implementation',
+    'implementation_attributes' => 'Implementation Attributes',
+    'scoring_and_interpretation' => 'Scoring and Interpretation',
+    'reliability_and_validity' => 'Reliability and Validity',
+    'researches_and_publications_in_which_the_scale_was_used' => 'Researches and Publications in which the Scale was Used',
+    'references' => 'References',
+
 
 
 ];

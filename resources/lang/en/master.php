@@ -7,5 +7,6 @@ return [
     'doc_dr' => 'Assoc. Prof. Dr.',
     'klinik_psikolog' => 'Clinical Psychologist',
     'trainings' => 'Trainings',
+    'select_language' => 'Select Language',
 
 ];

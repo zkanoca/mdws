@@ -50,3 +50,8 @@ Route::get('/{locale}/services/{category_slug}/{content_slug}', 'ServicesControl
 //Measurement & Evaluation
 Route::get('/{locale}/measurement-and-evaluation', 'ScalesController@index');
 Route::get('/{locale}/measurement-and-evaluation/{slug}', 'ScalesController@get_scale');
+
+//Membership Login Logout
+
+Route::get('/{locale}/login', 'MemberController@login');
+Route::get('/{locale}/create-account', 'MemberController@create_account');

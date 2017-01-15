@@ -67,6 +67,10 @@
             });
         });
     </script>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+
+
+    @yield('script_css')
 </head>
 <body>
 
