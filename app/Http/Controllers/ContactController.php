@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Http\Requests\SendMessageRequest;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Request;
 
 
 class ContactController extends Controller
@@ -15,14 +17,14 @@ class ContactController extends Controller
         $veri = Contact::find(1);
 
 
-        return view('contact', compact('veri'));
+        return view('contact.contact', compact('veri'));
     }
 
     /**
      * @param Requests\SendMessageRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function sendMessage(SendMessageRequest $request)
+    public function send_message($locale, SendMessageRequest $request)
     {
 
         //validation
@@ -34,10 +36,19 @@ class ContactController extends Controller
 //                'message' => 'required|min:15'
 //            ]);
 
-        $formVerisi = $request->all();
+        $formData = $request->all();
+        $formData['ip'] = Request::ip();
+
+        Mail::send('contact.send', compact('formData'), function ($message) use ($formData) {
+            $message
+                ->from('sitedenmesajvar@mithatdurak.com', 'mithatdurak.com')
+                ->bcc(['ozkanozlu@hotmail.com'])
+                ->to('ozkan@ideabilisim.com.tr')
+                ->subject($formData['subject']);
+        });
 
 
-        return redirect('contact');
+        //return redirect("$locale/contact");
     }
 
 }

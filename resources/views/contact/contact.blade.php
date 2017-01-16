@@ -170,9 +170,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 m_xs_bottom_30">
                     @if($errors->any())
-
                         <div class="row">
-
                             <ul class="alert alert-danger alert-dismissable" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
                                             aria-hidden="true">&times;</span>
@@ -180,62 +178,69 @@
                                 @foreach($errors->all() as $e)
                                     <li>{{$e}}</li>
                                 @endforeach
-
                             </ul>
 
                         </div>
-
                     @endif
+                    {{var_dump($errors)}}
                     <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">{{trans('contact.contact_form')}}</h3>
 
                     <p class="m_bottom_35 heading_2 t_align_c">{{trans('contact.have_any_question')}}</p>
 
-                    {!! Form::open(['url'=>'/'.App::getLocale().'/contact/sendMessage']) !!}
-                    <div class="form-group row">
+                    {!! Form::open(['url'=>'/'.App::getLocale().'/contact/send-message']) !!}
+                    <div class="row">
                         <div class="col-md-4">
+                            <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
+                                {!!Form::text('name', null,
+                                ['class' => 'w_full r_corners fw_light',
+                                 'required'=>'required',
+                                 'placeholder'=>trans('contact.your_name')])
+                                !!}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group  {{$errors->has('email') ? 'has-error' : ''}}">
+                                {!!Form::email('email', null,
+                                ['class' => 'w_full r_corners fw_light',
+                                 'required'=>'required',
+                                 'placeholder'=>trans('contact.your_email')])
+                                !!}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group  {{$errors->has('phone') ? 'has-error' : ''}}">
+                                {!!Form::text('phone', null,
+                                ['class' => 'w_full r_corners fw_light',
+                                 'placeholder'=>trans('contact.your_phone_number') ]) !!}
+                            </div>
+                        </div>
+                        <div class="form-group {{$errors->has('subject') ? 'has-error' : ''}}">
+                            {!!
+                            Form::text('subject', null, [ 'class' => 'w_full r_corners fw_light',
+                            'placeholder'=>trans('contact.subject'),
+                            'required' => 'required'
+                            ]
+                            )
+                            !!}
 
-                            {!!Form::text('name', null,
-                            ['class' => 'w_full r_corners fw_light', 'required'=>'required', 'placeholder'=>trans('contact.your_name')])
+                        </div>
+
+                        <div class="form-group {{$errors->has('message') ? 'has-error' : ''}}">
+                            {!!Form::textarea('message', null,
+                            ['class' => 'w_full r_corners fw_light height_3', 'required'=>'required',
+                            'placeholder'=>trans('contact.your_message')])
                             !!}
                         </div>
-                        <div class="col-md-4">
-                            {!!Form::email('email', null,
-                            ['class' => 'w_full r_corners fw_light', 'required'=>'required',
-                            'placeholder'=>trans('contact.your_email')])
-                            !!}
+
+                        <div class="form-group">
+                            {!!Form::button('<i class="glyphicon glyphicon-send"></i> ' . trans("contact.send_message") ,
+                            ['class' => 'button_type_5 color_blue transparent r_corners fs_medium tr_all m_right_10
+                            m_sm_bottom_10',
+                            'type'=>'submit']) !!}
                         </div>
-                        <div class="col-md-4">
-                            {!!Form::text('phone', null,
-                            ['class' => 'w_full r_corners fw_light', 'placeholder'=>trans('contact.your_phone_number') ]) !!}
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        {!!
-                        Form::text('subject', null, [ 'class' => 'w_full r_corners fw_light',
-                        'placeholder'=>trans('contact.subject'),
-                        'required' => 'required'
-                        ]
-                        )
-                        !!}
-
-                    </div>
-
-                    <div class="form-group">
-                        {!!Form::textarea('message', null,
-                        ['class' => 'w_full r_corners fw_light height_3', 'required'=>'required',
-                        'placeholder'=>trans('contact.your_message')])
-                        !!}
-                    </div>
-                    <div class="form-group">
-                        {!!Form::button('<i class="glyphicon glyphicon-send"></i> ' . trans("contact.send_message") ,
-                        ['class' => 'button_type_5 color_blue transparent r_corners fs_medium tr_all m_right_10
-                        m_sm_bottom_10',
-                        'type'=>'submit']) !!}
                     </div>
                     {!! Form::close() !!}
                 </div>
             </div>
-        </div>
     </section>
 @stop

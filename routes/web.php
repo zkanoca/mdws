@@ -19,7 +19,7 @@ Route::get('/{locale}/news/{slug}', 'NewsController@get_news');
 
 //contact routes
 Route::get('/{locale}/contact', 'ContactController@index');
-Route::post('/{locale}/contact/sendMessage', 'ContactController@sendMessage');
+Route::post('/{locale}/contact/send-message', 'ContactController@send_message');
 
 //about routes
 Route::get('/{locale}/about', 'AboutController@index');
@@ -56,7 +56,8 @@ Route::get('/{locale}/measurement-and-evaluation/{slug}', 'ScalesController@get_
 Route::get('/{locale}/login', 'MemberController@login');
 Route::get('/{locale}/create-account', 'MemberController@create_account');
 Route::post('/{locale}/create-new-user', 'MemberController@create_new_user');
-Route::post('/{locale}/account-information', 'MemberController@account_information');
+Route::get('/{locale}/account-information', 'MemberController@account_information');
 Route::post('/{locale}/update-account', 'MemberController@update_account');
-Route::post('/{locale}/forgot-password', 'MemberController@forgot_password');
+Route::get('/{locale}/forgot-password', 'MemberController@forgot_password');
+Route::post('/{locale}/reset-password', 'MemberController@reset_password');
 Route::get('/{locale}/logout', 'MemberController@logout');
