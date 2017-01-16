@@ -2,20 +2,14 @@
 
 
 @section('page_title')
-
     {{trans('nav.contact')}}
-
 @stop
-
 
 @section('nav_contact_current')
     current
 @stop
 
-
 @section('content')
-
-
     <section class="page_title translucent_bg_color_scheme image_fixed image_bg_14 t_align_c relative wrapper">
         <div class="container">
             <h1 class="color_light fw_light m_bottom_5">{{trans('nav.contact')}}</h1>
@@ -27,19 +21,13 @@
             </ul>
         </div>
     </section>
-
     <section class="section_offset">
-
-
         <div class="container clearfix">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 m_xs_bottom_30">
                     <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">{{trans('contact.contact_information')}}</h3>
-
                     <p class="m_bottom_35 heading_2 t_align_c"></p>
-
                     <p class="fw_light m_bottom_23"></p>
-
                     <div class="row">
                         <ul class="col-lg-6 col-md-6 col-sm-6 fw_light w_break m_bottom_45 m_xs_bottom_30">
                             <li class="m_bottom_8">
@@ -54,8 +42,6 @@
                                 </div>
                                 {{$veri->faks1}}
                             </li>
-
-
                             <li class="m_bottom_8">
                                 <div class="d_inline_m icon_wrap_size_1 color_pink circle m_right_10">
                                     <i class="icon-mail-alt"></i>
@@ -179,15 +165,11 @@
                                     <li>{{$e}}</li>
                                 @endforeach
                             </ul>
-
                         </div>
                     @endif
-                    {{var_dump($errors)}}
                     <h3 class="color_dark fw_light m_bottom_15 heading_1 t_align_c">{{trans('contact.contact_form')}}</h3>
-
                     <p class="m_bottom_35 heading_2 t_align_c">{{trans('contact.have_any_question')}}</p>
-
-                    {!! Form::open(['url'=>'/'.App::getLocale().'/contact/send-message']) !!}
+                    {!! Form::open(['url'=>'/'.App::getLocale().'/send-message']) !!}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group {{$errors->has('name') ? 'has-error' : ''}}">
@@ -215,23 +197,15 @@
                             </div>
                         </div>
                         <div class="form-group {{$errors->has('subject') ? 'has-error' : ''}}">
-                            {!!
-                            Form::text('subject', null, [ 'class' => 'w_full r_corners fw_light',
-                            'placeholder'=>trans('contact.subject'),
-                            'required' => 'required'
-                            ]
-                            )
-                            !!}
-
+                            {!! Form::text('subject', null, [ 'class' => 'w_full r_corners fw_light',
+                            'placeholder'=>trans('contact.subject'), 'required' => 'required']) !!}
                         </div>
-
                         <div class="form-group {{$errors->has('message') ? 'has-error' : ''}}">
                             {!!Form::textarea('message', null,
                             ['class' => 'w_full r_corners fw_light height_3', 'required'=>'required',
                             'placeholder'=>trans('contact.your_message')])
                             !!}
                         </div>
-
                         <div class="form-group">
                             {!!Form::button('<i class="glyphicon glyphicon-send"></i> ' . trans("contact.send_message") ,
                             ['class' => 'button_type_5 color_blue transparent r_corners fs_medium tr_all m_right_10
@@ -242,5 +216,6 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+        </div>
     </section>
 @stop

@@ -19,7 +19,7 @@ Route::get('/{locale}/news/{slug}', 'NewsController@get_news');
 
 //contact routes
 Route::get('/{locale}/contact', 'ContactController@index');
-Route::post('/{locale}/contact/send-message', 'ContactController@send_message');
+Route::post('/{locale}/send-message', 'ContactController@send_message');
 
 //about routes
 Route::get('/{locale}/about', 'AboutController@index');
