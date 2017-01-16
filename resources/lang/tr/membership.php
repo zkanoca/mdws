@@ -20,6 +20,7 @@ return [
     'meslek' => 'Meslek',
     'sehir' => 'Şehir',
     'ulke' => 'Ülke',
+    'telefon' => 'Telefon',
     'lise_mezunu' => 'Lise Mezunu',
     'lisans_ogrencisi_veya_mezunu' => 'Lisans Öğrencisi veya Mezunu',
     'yuksek_lisans_ogrencisi_veya_mezunu' => 'Yüksek Lisans Öğrencisi veya Mezunu',

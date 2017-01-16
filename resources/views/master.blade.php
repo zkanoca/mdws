@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>@yield('page_title')</title>
+    <title>Mithat DURAK ::: @yield('page_title')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet"
@@ -29,7 +28,7 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="author" content="Özkan ÖZLÜ - ozkanozlu@hotmail.com">
+    <meta name="author" content="Özkan ÖZLÜ - ozkanozlu@hotmail.com - http://zkanoca.wordpress.com">
     <meta name="keywords" content="Psikoloji, Psychology, geropsikoloji, geropsychology, mithat durak">
     <meta name="description" content="Mithat Durak's personal web site">
     <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('/images/favicon.png')}}">

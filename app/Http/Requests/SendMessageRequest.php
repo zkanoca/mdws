@@ -27,7 +27,7 @@ class SendMessageRequest extends FormRequest
             'name' => 'required|min:3',
             'email' => 'required|min:5',
             'subject' => 'required|min:3',
-            'message' => 'required',
+            'message' => 'required|min:15',
         ];
     }
 }

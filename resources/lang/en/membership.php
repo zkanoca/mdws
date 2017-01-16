@@ -20,6 +20,7 @@ return [
     'meslek' => 'Occupation',
     'sehir' => 'City',
     'ulke' => 'Country',
+    'telefon' => 'Phone',
     'lise_mezunu' => 'High School graduate',
     'lisans_ogrencisi_veya_mezunu' => 'Licence Student or Graduate',
     'yuksek_lisans_ogrencisi_veya_mezunu' => 'Master Student or Graduate',

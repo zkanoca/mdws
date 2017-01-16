@@ -55,3 +55,8 @@ Route::get('/{locale}/measurement-and-evaluation/{slug}', 'ScalesController@get_
 
 Route::get('/{locale}/login', 'MemberController@login');
 Route::get('/{locale}/create-account', 'MemberController@create_account');
+Route::post('/{locale}/create-new-user', 'MemberController@create_new_user');
+Route::post('/{locale}/account-information', 'MemberController@account_information');
+Route::post('/{locale}/update-account', 'MemberController@update_account');
+Route::post('/{locale}/forgot-password', 'MemberController@forgot_password');
+Route::get('/{locale}/logout', 'MemberController@logout');

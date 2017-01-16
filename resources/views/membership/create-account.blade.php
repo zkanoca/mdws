@@ -27,34 +27,39 @@ foreach ($universities as $u) {
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.0/css/bootstrap-slider.min.css"
           integrity="sha256-+FBCj9WGOc2GgRSiBKQLV/7+WS1AFUzqQSv1MzTY7+0=" crossorigin="anonymous"/>
 
+    <script src="/js/bootstrap-datepicker.min.js" type="text/javascript" language="JavaScript"></script>
+    <script src="/js/bootstrap-datepicker.{{App::getLocale()}}.min.js" type="text/javascript"
+            language="JavaScript"></script>
+    <link href="/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
     <script>
+
         $(function () {
 
             $("#lisans_select")
                 .change(function () {
                     if ($(this).val() == 999) {
-                        $('#lisans_diger_universite').removeAttr('disabled');
+                        $('#lisans_diger_universite').removeAttr('disabled').attr('required', 'required');
                     }
                     else {
-                        $('#lisans_diger_universite').attr('disabled', 'disabled').val('');
+                        $('#lisans_diger_universite').attr('disabled', 'disabled').val('').removeAttr('required', 'required');
                     }
                 });
             $("#yuksek_lisans_select")
                 .change(function () {
                     if ($(this).val() == 999) {
-                        $('#yuksek_lisans_diger_universite').removeAttr('disabled');
+                        $('#yuksek_lisans_diger_universite').removeAttr('disabled').attr('required', 'required');
                     }
                     else {
-                        $('#yuksek_lisans_diger_universite').attr('disabled', 'disabled').val('');
+                        $('#yuksek_lisans_diger_universite').attr('disabled', 'disabled').val('').removeAttr('required', 'required');
                     }
                 });
             $("#doktora_select")
                 .change(function () {
                     if ($(this).val() == 999) {
-                        $('#doktora_diger_universite').removeAttr('disabled');
+                        $('#doktora_diger_universite').removeAttr('disabled').attr('required', 'required');
                     }
                     else {
-                        $('#doktora_diger_universite').attr('disabled', 'disabled').val('');
+                        $('#doktora_diger_universite').attr('disabled', 'disabled').val('').removeAttr('required', 'required');
                     }
                 });
 
@@ -66,6 +71,15 @@ foreach ($universities as $u) {
                 tooltip: 'always'
             });
 
+            $('#terms_check').click(
+                function () {
+                    if ($(this).is(':checked')) {
+                        $("#kayit_button").removeClass('disabled');
+                    }
+                    else {
+                        $("#kayit_button").addClass('disabled');
+                    }
+                });
 
             $('#lisans_bilgileri').hide();
             $('#yuksek_lisans_bilgileri').hide();
@@ -78,45 +92,51 @@ foreach ($universities as $u) {
                         $('#lisans_bilgileri').hide();
                         $('#yuksek_lisans_bilgileri').hide();
                         $('#doktora_bilgileri').hide();
+                        $('#lisans_bolum, #master_bolum, #doktora_bolum').removeAttr('required');
                     }
                     else if ($(this).val() === "1") {
                         $('#lisans_bilgileri').show();
                         $('#yuksek_lisans_bilgileri').hide();
                         $('#doktora_bilgileri').hide();
+                        $('#lisans_bolum').attr('required');
+                        $('#master_bolum, #doktora_bolum').removeAttr('required');
                     }
                     else if ($(this).val() === "2") {
                         $('#lisans_bilgileri').show();
                         $('#yuksek_lisans_bilgileri').show();
                         $('#doktora_bilgileri').hide();
+                        $('#lisans_bolum, #master_bolum').attr('required');
+                        $('#doktora_bolum').removeAttr('required');
                     }
                     else if ($(this).val() === "3") {
                         $('#lisans_bilgileri').show();
                         $('#yuksek_lisans_bilgileri').show();
                         $('#doktora_bilgileri').show();
+                        $('#lisans_bolum, #master_bolum, #doktora_bolum').attr('required');
                     }
                 });
 
-
+            $('#date_of_birth').datepicker({
+                format: "yyyy-mm-dd",
+                startDate: "1907-01-01",
+                endDate: "2007-12-31",
+                todayBtn: "linked",
+                language: "{{App::getLocale()}}",
+                //orientation: "top auto",
+                todayHighlight: true
+            });
         });
-
-
     </script>
     <style>
         .slider {
             width: 100% !important;
         }
-
-
     </style>
-
 
 @stop
 
 @section('content')
-    <script src="/js/bootstrap-datepicker.min.js" type="text/javascript" language="JavaScript"></script>
-    <script src="/js/bootstrap-datepicker.{{App::getLocale()}}.min.js" type="text/javascript"
-            language="JavaScript"></script>
-    <link href="/css/bootstrap-datepicker3.standalone.min.css" rel="stylesheet">
+
     <section class="page_title image_bg_7 t_align_c">
         <div class="container">
             <h1 class="color_light fw_light m_bottom_5">{{trans('membership.create_account')}}</h1>
@@ -135,37 +155,36 @@ foreach ($universities as $u) {
                 <h3 class="page-header">{{trans('membership.create_account')}}</h3>
                 @if($errors->any())
                     <div class="row">
-
-                        <ul class="alert alert-danger alert-dismissable" role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span>
-                            </button>
-                            @foreach($errors->all() as $e)
-                                <li>{{$e}}</li>
-                            @endforeach
-
-                        </ul>
-
+                        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                            <ul class="alert alert-danger alert-dismissable" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span>
+                                </button>
+                                @foreach($errors->all() as $e)
+                                    <li>{{$e}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 @endif
 
-                {!!Form::open(['class' => 'form'])!!}
+                {!!Form::open(['class' => 'form', 'url' => '/'.App::getLocale().'/create-new-user'])!!}
                 <div class="col-lg-5 col-md-5">
                     <div class="form-group">
                         {!! Form::label('email', trans('membership.mail_address')) !!}
                         {!! Form::email('email', null, ['placeholder' => trans('membership.mail_address'),
+                        'class' =>'form-control' ,
+                        'required' => 'required'])!!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('parola', trans('membership.password')) !!}
+                        {!! Form::password('parola',  ['placeholder' => trans('membership.password'),
                         'class' =>'form-control',
                         'required' => 'required'])!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('password', trans('membership.password')) !!}
-                        {!! Form::password('password',  ['placeholder' => trans('membership.password'),
-                        'class' =>'form-control',
-                        'required' => 'required'])!!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('password2', trans('membership.password_again')) !!}
-                        {!! Form::password('password2', ['placeholder' => trans('membership.password_again'),
+                        {!! Form::label('parola_confirmation', trans('membership.password_again')) !!}
+                        {!! Form::password('parola_confirmation', ['placeholder' => trans('membership.password_again'),
                         'class' =>'form-control',
                         'required' => 'required'])!!}
                     </div>
@@ -173,7 +192,7 @@ foreach ($universities as $u) {
                 <div class="col-lg-5 col-md-5 col-lg-offset-1 col-md-offset-1">
                     <div class="form-group">
                         {!! Form::label('adi', trans('membership.your_name')) !!}
-                        {!! Form::email('adi', null, ['placeholder' => trans('membership.your_name'),
+                        {!! Form::text('adi', null, ['placeholder' => trans('membership.your_name'),
                         'class' =>'form-control',
                         'required' => 'required'])!!}
                     </div>
@@ -198,29 +217,17 @@ foreach ($universities as $u) {
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </div>
                                 </div>
-
-                                <script type="text/javascript">
-                                    $('#date_of_birth').datepicker({
-                                        format: "yyyy-mm-dd",
-                                        startDate: "1907-01-01",
-                                        endDate: "2007-12-31",
-                                        todayBtn: "linked",
-                                        language: "{{App::getLocale()}}",
-                                        //orientation: "top auto",
-                                        todayHighlight: true
-                                    });
-                                </script>
                             </div>
                         </div>
                         <div class="col-md-6">
                             {!! Form::label('cinsiyet', trans('membership.gender')) !!}
                             <div class="btn-group btn-group-justified" data-toggle="buttons">
                                 <label class="btn btn-default">
-                                    {!! Form::radio('cinsiyet', null, ['autocomplete' => 'off', 'value' => '1']) !!}
+                                    {!! Form::radio('cinsiyet', '1', ['autocomplete' => 'off']) !!}
                                     <i class="fa fa-mars fa-lg"></i> {{trans('membership.gender_male')}}
                                 </label>
                                 <label class="btn btn-default">
-                                    {!! Form::radio('cinsiyet', null, ['autocomplete' => 'off', 'value' => '2']) !!}
+                                    {!! Form::radio('cinsiyet', '2', ['autocomplete' => 'off']) !!}
                                     <i class="fa fa-venus fa-lg"></i> {{trans('membership.gender_female')}}
                                 </label>
                             </div>
@@ -229,7 +236,7 @@ foreach ($universities as $u) {
                 </div>
 
 
-                <div class="col-md-4  col-lg-4 ">
+                <div class="col-md-3 col-lg-3 ">
                     <div class="form-group">
                         {!! Form::label('sehir', trans('membership.sehir')) !!}
                         {!! Form::text('sehir', null, ['placeholder' => trans('membership.sehir'),
@@ -237,7 +244,7 @@ foreach ($universities as $u) {
                         'required' => 'required'])!!}
                     </div>
                 </div>
-                <div class="col-md-4  col-lg-4 ">
+                <div class="col-md-3  col-lg-3 ">
                     <div class="form-group">
                         {!! Form::label('ulke', trans('membership.ulke')) !!}
                         {!! Form::text('ulke', null, ['placeholder' => trans('membership.ulke'),
@@ -245,7 +252,14 @@ foreach ($universities as $u) {
                         'required' => 'required'])!!}
                     </div>
                 </div>
-                <div class="col-md-4  col-lg-4 ">
+                <div class="col-md-3  col-lg-3 ">
+                    <div class="form-group">
+                        {!! Form::label('telefon', trans('membership.telefon')) !!}
+                        {!! Form::text('telefon', null, ['placeholder' => trans('membership.telefon'),
+                        'class' =>'form-control'])!!}
+                    </div>
+                </div>
+                <div class="col-md-3  col-lg-3 ">
                     <div class="form-group">
                         {!! Form::label('meslek', trans('membership.meslek')) !!}
                         {!! Form::text('meslek', null, ['placeholder' => trans('membership.meslek'),
@@ -282,8 +296,8 @@ foreach ($universities as $u) {
 
                 <div class="col-md-4 col-lg-4" id="lisans_bilgileri">
                     <div class="form-group">
-                        {!! Form::label('lisans', trans('membership.lisans')) !!}
-                        {!! Form::select('lisans',
+                        {!! Form::label('lisans_donem', trans('membership.lisans')) !!}
+                        {!! Form::select('lisans_donem',
                         [
                         '99' => trans('membership.donem_seciniz'),
                         '0' => trans('membership.mezun'),
@@ -304,8 +318,8 @@ foreach ($universities as $u) {
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lisans_universite', trans('membership.universite')) !!}
-                        {!! Form::select('lisans_universite',
+                        {!! Form::label('lisans_uni', trans('membership.universite')) !!}
+                        {!! Form::select('lisans_uni',
                         $uniList,
                         null, //seçili öğe değeri
                          ['class' => 'form-control',
@@ -314,8 +328,8 @@ foreach ($universities as $u) {
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lisans_diger_universite', trans('membership.diger_universite')) !!}
-                        {!! Form::text('lisans_diger_universite', null, ['placeholder' => trans('membership.diger_universite'),
+                        {!! Form::label('lisans_uni2', trans('membership.diger_universite')) !!}
+                        {!! Form::text('lisans_uni2', null, ['placeholder' => trans('membership.diger_universite'),
                         'class' =>'form-control', 'id' => 'lisans_diger_universite',
                         'disabled' => 'disabled'])!!}
                     </div>
@@ -327,8 +341,8 @@ foreach ($universities as $u) {
                 </div>
                 <div class="col-md-4 col-lg-4" id="yuksek_lisans_bilgileri">
                     <div class="form-group">
-                        {!! Form::label('yuksek_lisans', trans('membership.yuksek_lisans')) !!}
-                        {!! Form::select('yuksek_lisans',
+                        {!! Form::label('master_donem', trans('membership.yuksek_lisans')) !!}
+                        {!! Form::select('master_donem',
                         [
                         '99' => trans('membership.donem_seciniz'),
                         '0' => trans('membership.mezun'),
@@ -346,29 +360,29 @@ foreach ($universities as $u) {
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('yuksek_lisans_universite', trans('membership.universite')) !!}
-                        {!! Form::select('yuksek_lisans_universite',
+                        {!! Form::label('master_uni', trans('membership.universite')) !!}
+                        {!! Form::select('master_uni',
                         $uniList,
                         null, //seçili öğe değeri
                          ['class' => 'form-control', 'id' => 'yuksek_lisans_select']
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('yuksek_lisans_diger_universite', trans('membership.diger_universite')) !!}
-                        {!! Form::text('yuksek_lisans_diger_universite', null, ['placeholder' => trans('membership.diger_universite'),
+                        {!! Form::label('master_uni2', trans('membership.diger_universite')) !!}
+                        {!! Form::text('master_uni2', null, ['placeholder' => trans('membership.diger_universite'),
                         'class' =>'form-control', 'id' => 'yuksek_lisans_diger_universite',
                         'disabled' => 'disabled'])!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('yuksek_lisans_bolum', trans('membership.bolum')) !!}
-                        {!! Form::text('yuksek_lisans_bolum', null, ['placeholder' => trans('membership.bolum'),
+                        {!! Form::label('master_bolum', trans('membership.bolum')) !!}
+                        {!! Form::text('master_bolum', null, ['placeholder' => trans('membership.bolum'),
                         'class' =>'form-control'])!!}
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4" id="doktora_bilgileri">
                     <div class="form-group">
-                        {!! Form::label('doktora', trans('membership.doktora')) !!}
-                        {!! Form::select('doktora',
+                        {!! Form::label('doktora_donem', trans('membership.doktora')) !!}
+                        {!! Form::select('doktora_donem',
                         [
                         '99' => trans('membership.donem_seciniz'),
                         '0' => trans('membership.mezun'),
@@ -382,32 +396,32 @@ foreach ($universities as $u) {
                         '1' => trans('membership.donem_1')
                         ],
                         null, //seçili öğe değeri
-                         ['class' => 'form-control', 'id' => 'doktora_select']
+                         ['class' => 'form-control']
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('doktora_universite', trans('membership.universite')) !!}
-                        {!! Form::select('doktora_universite',
+                        {!! Form::label('doktora_uni', trans('membership.universite')) !!}
+                        {!! Form::select('doktora_uni',
                         $uniList,
                         null, //seçili öğe değeri
                          ['class' => 'form-control', 'id' => 'doktora_select']
                         )!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('doktora_diger_universite', trans('membership.diger_universite')) !!}
-                        {!! Form::text('doktora_diger_universite', null, ['placeholder' => trans('membership.diger_universite'),
+                        {!! Form::label('doktora_uni2', trans('membership.diger_universite')) !!}
+                        {!! Form::text('doktora_uni2', null, ['placeholder' => trans('membership.diger_universite'),
                         'class' =>'form-control', 'id' => 'doktora_diger_universite',
                         'disabled' => 'disabled'])!!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('doktora_lisans_bolum', trans('membership.bolum')) !!}
+                        {!! Form::label('doktora_bolum', trans('membership.bolum')) !!}
                         {!! Form::text('doktora_bolum', null, ['placeholder' => trans('membership.bolum'),
                         'class' =>'form-control'])!!}
                     </div>
                 </div>
-            </div>
-            <hr>
-            <div class="row">
+
+                <hr>
+
                 <div class="col-md-9 col-lg-9">
                     <ul class="vr_list_type_3 counter color_dark fw_light">
                         <li class="counter_inc m_bottom_20">{!! trans('membership.terms1', ['aopen' => '<a href="https://www.psikolog.org.tr/turkey-code-tr.pdf" target="_blank">', 'aclose' => '</a>'])!!}</li>
@@ -416,14 +430,18 @@ foreach ($universities as $u) {
 
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" value="1" name="accept"
+                            <input type="checkbox" value="1" name="accept" id="terms_check"
                                    required="required"> {{trans('membership.i_accept_terms')}}
                         </label>
                     </div>
-                
-                    {!! Form::button('<i class="fa fa-floppy-o fa-lg"></i> &nbsp; '.trans('membership.kaydet'),  ['class' => 'btn btn-primary btn-lg', 'type' => 'submit']) !!}
+                    {!! Form::hidden('ip', Request::ip()) !!}
+
+                    {!! Form::button('<i class="fa fa-floppy-o fa-lg"></i> &nbsp; '.trans('membership.kaydet'),
+                    ['class' => 'btn btn-primary btn-lg disabled', 'type' => 'submit', 'id' => 'kayit_button']) !!}
                 </div>
+
             </div>
+
             {!!Form::close()!!}
         </div>
     </section>

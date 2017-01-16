@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 
 use App\Contact;
-use App\Http\Requests;
+use App\Http\Requests\SendMessageRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -22,7 +22,7 @@ class ContactController extends Controller
      * @param Requests\SendMessageRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function sendMessage(Requests\SendMessageRequest $request)
+    public function sendMessage(SendMessageRequest $request)
     {
 
         //validation
